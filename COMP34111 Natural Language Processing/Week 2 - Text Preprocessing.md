@@ -21,12 +21,12 @@ There are no hard rules for how to peform tokenization, however it is important 
 - **Morphological Analysis**: Words are not the most basic unit of text, instead we have *morphemes* - prefix, suffix, stem. 
 	demoralisation -> de, moral, isation.
 **Word inflection**: Words are modified for different uses e.g. temporal: *shot, shooting.
-![[misc/Pasted image 20231003103949.png]]
+![](misc/Pasted%20image%2020231003103949.png)
 
 **Stemming**: We *remove* additional morphogical data by removing suffixes (and possibly prefixes). However we can commit under/over-stemming.
 
 *Porter Stemmer*: One of most used and accurate stemming algorithms for english language.
-![[misc/Pasted image 20231003104545.png]]
+![](misc/Pasted%20image%2020231003104545.png)
 
 #### Alternative Tokenization methods
 - Character-level tokenization: Character n-grams
@@ -51,7 +51,7 @@ https://huggingface.co - Website for language models.
 **Zipf's law**: Frequency of a word inversely proportional to its word rank/importance. word frequency $\propto$ word rank$^{-1}$.
 
 **Luhn's Hypothesis**: Words in rank above the upper limit are considered too common, and those below the lower limit are too sparse to be of any significance. We only consider words within a certain frequency range.
-![[misc/Pasted image 20231003112122.png]]
+![](misc/Pasted%20image%2020231003112122.png)
 
 **Stop words**: These can be removed as they have low distinguishing power for text documents. Examples: *the, and, it, a*. We can have different stop word lists for different types of domains. https://gist.github.com/sebleier/554280.
 
@@ -63,7 +63,7 @@ For a vocabulary vector |V| of words, a document D is represented as a **vector 
 IDF increases with rarity / inverse proportion to No. of occurences of i in all documents in our corpus.
 
 **tf.idf weighting**: Adjusts for the fact that some words occur more often in general. Increases with no. of occurences of term i in our document.
-![[misc/Pasted image 20231003113834.png]]
+![](misc/Pasted%20image%2020231003113834.png)
 
 **Word n-grams**: consider combinations of words. Allow us to preserve localised word order. 
 	This is a sentence -> 2-gram -> this is, is a, a sentence.
@@ -71,7 +71,8 @@ Higher n-grams become very sparse. https://books.google.com/ngrams/info
 
 ### Probabilistic language modelling 
 A function that assigns a higher probability to pieces of text that appear more natural.
-- Unigram probabilistic model: Assign a probability to each word, and multiply together. We are assuming the words appeared independently and identically distrubuted in terms of occurence. Later apply bayesian inference? ![[misc/Pasted image 20231003114351.png]]
+- Unigram probabilistic model: Assign a probability to each word, and multiply together. We are assuming the words appeared independently and identically distrubuted in terms of occurence. Later apply bayesian inference? 
+ ![](misc/Pasted%20image%2020231003114351.png)
 - **Calculating word probabilities**: Use word frequency / total no. of terms in corpus.
 - **Chain rule**: We can calculate overall probability of some text by using the probability of a word given surrounding (previous?) words to preserve order.
 - 
@@ -86,7 +87,7 @@ A function that assigns a higher probability to pieces of text that appear more 
 3. Count-based estimation
 
 **Count-based estimation**: For a N-gram model, we count the number of occurence of a word $w_k$ with a N-1 previous words $w_{k-1},\ldots w_{k-N+1}$, we calculate the maximum likelihood probability thus:
-![[misc/Pasted image 20231003144340.png]]
+![](misc/Pasted%20image%2020231003144340.png)
 N-gram models can generate text; trigram models produce most readable (but nonsensical) text. Does not account for long-distance dependencies in words.
 
 **Overfitting**: The test dataset often does not look like the training dataset. There are methods to mitigate this:
