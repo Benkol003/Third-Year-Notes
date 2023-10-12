@@ -41,9 +41,11 @@ An *approximated* curve will only pass through some control points; other contro
 (As a basic example)
 
 An interpolated cubic curve that has 4 control points, passing through two of them.
+
 ![](misc/Pasted%20image%2020231012133914.png)
 
 Cubic Bezier curves are bounded by the *convex hull* formed by it's control points:
+
 ![](misc/Pasted%20image%2020231012133956.png)
 
 The curve has tangents that are formed by the first and last two control points - (p1,p2) & (p3,p4).
@@ -91,6 +93,7 @@ Bernstein Polynomials have the following properties:
 P(t) = Geometry (control points) X spline basis X Power Basis (powers of parameter t)
 
 Example: Matrix form for 3rd degree Bernstein polynomial
+
 ![](misc/Pasted%20image%2020231012175202.png)
 
 Each row of the spline basis relates to the *coefficients* (but not the Bezier coefficient!) of the terms of a basis polynomial, once expanded **(monomial form)**.
@@ -117,6 +120,7 @@ The curve will also be split in ratio t:1-t.
 
 We can also use the new points calculated to split the curve into two separate curves; 
 This diagram shows which control points are used for two new Bezier curves, circled in white.
+
 ![](misc/Pasted%20image%2020231012204523.png)
 We use all the new points generated to the left/right side of the point, bar the middle ones, except for the point on the line.
 
