@@ -20,10 +20,10 @@ There are no hard rules for how to peform tokenization, however it is important 
 	  {ball, balls, ball's, balled} -> ball
 - **Morphological Analysis**: Words are not the most basic unit of text, instead we have *morphemes* - prefix, suffix, stem. 
 	demoralisation -> de, moral, isation.
-**Word inflection**: Words are modified for different uses e.g. temporal: *shot, shooting.
+**Word inflection**: Words are modified for different uses e.g. temporal: *shot, shooting.*
 ![](misc/Pasted%20image%2020231003103949.png)
 
-**Stemming**: We *remove* additional morphogical data by removing suffixes (and possibly prefixes). However we can commit under/over-stemming.
+**Stemming**: We *remove* additional morphological data by removing suffixes (and possibly prefixes). However we can commit under/over-stemming.
 
 *Porter Stemmer*: One of most used and accurate stemming algorithms for english language.
 ![](misc/Pasted%20image%2020231003104545.png)
