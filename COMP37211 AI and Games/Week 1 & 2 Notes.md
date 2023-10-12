@@ -29,6 +29,7 @@ If a prisoner snitches it is not always the case that their jail time is reduced
 This represents the final scores of players for a given strategy/sequence of moves in a form of a matrix, where each entry denotes the final score. This is used for games of simultaneous play; Or for sequential games the sequence of moves is chosen in advance and we do not consider any kind of in-game strategy.
 
 Rock-Paper-Scissors game in normal form:
+
 ![](misc/Pasted%20image%2020231005121933.png)
 
 Normal form is mathematically convenient, (as we have all possible strategies), but computationally inefficient - it is impossible to do so for chess.
@@ -38,6 +39,7 @@ This is also known as *extensive form*.
 Maps all possible choices players can make in a game from start to finish, with a resulting scored outcome.
 
 Rock-Paper-Scissors game tree:
+
 ![](misc/Pasted%20image%2020231005121239.png)
 
 
@@ -71,23 +73,6 @@ Adapted from Dijkstra, uses a *heuristic* such that we don't have to visit every
 	1. Must find a path (but not optimal) from start to end node
 	2. For the current node u, we calculate its minimum path distance to the end node as $D(u)+H(u)$ - distance to u + heuristic from u to end node. If this is greater than the distance found for the previous best path then we can guarantee that no path through u will be optimal and can discard it to the visited set (don't consider it's neighbours).
 
-### Generative Adversarial Networks
-***(Note: this is not in the lectures)***
-
-A *G.A.N.* uses a *generative network* and a *discriminative network* that compete against each other.
-
-- **Generative Network**: Takes real data as input; Attempts to generate 'false' data and mix it in with the provided data on the output.
-	- The generative network takes random noise as an input; this may be accompanied by some input data (e.g. text prompt) for context in the case of *Conditional generative networks.*
-- **Discriminative Network**: Takes the data provided by the generative network, and attempts to distinguish between what is *real data* and what is *false data*.
-	- Classification error is backpropagated through the network. Again it may be a conditional network and take some context data input.
-
-These two networks compete and penalize against each other as they train simultaneously. Ideally the two networks will reach an equilibrium point where they cannot be trained any further.
-
--**Mode collapse**: An issue in GAN's where it fails to generalize properly. E.g. for a MNIST dataset the generative network may only learn to produce zeroes.
-
-Once trained, the generative network can be sued as generative AI (e.g. generating an image from a text prompt). The discriminative network can be used for usual classification tasks.
-
-
 ### Game Solving
 
 **Perfect Play**: A strategy that can guarantee the best possible outcome for a player from a position, irrespective of any moves that the opponent chooses. Not necessarily a win, may only e.g. guarantee a draw or a certain score, but guarantee's obtaining that nonetheless.
@@ -110,6 +95,22 @@ Hex is *ultra-weak solved:* The first player is guaranteed a win if they perfect
 
 Safely Connected Patterns: Two groups of filled hex's arranged such that we can always connect them.
 Hex strategy usually involves building blocks of safely-connected patterns to connect together into a full path to win the game.
+
+### Generative Adversarial Networks
+***(Note: this is only briefly mentioned in the lectures)***
+
+A *G.A.N.* uses a *generative network* and a *discriminative network* that compete against each other.
+
+- **Generative Network**: Takes real data as input; Attempts to generate 'false' data and mix it in with the provided data on the output.
+	- The generative network takes random noise as an input; this may be accompanied by some input data (e.g. text prompt) for context in the case of *Conditional generative networks.*
+- **Discriminative Network**: Takes the data provided by the generative network, and attempts to distinguish between what is *real data* and what is *false data*.
+	- Classification error is backpropagated through the network. Again it may be a conditional network and take some context data input.
+
+These two networks compete and penalize against each other as they train simultaneously. Ideally the two networks will reach an equilibrium point where they cannot be trained any further.
+
+- **Mode collapse**: An issue in GAN's where it fails to generalize properly. E.g. for a MNIST dataset the generative network may only learn to produce zeroes.
+
+Once trained, the generative network can be used as generative AI (e.g. generating an image from a text prompt). The discriminative network can be used for usual classification tasks.
 
 
 
