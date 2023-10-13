@@ -116,12 +116,14 @@ For our given control points and t:
 4. The final point obtained is the point on the Bezier curve.
 
 ![](misc/Pasted%20image%2020231012195923.png)
+
 The curve will also be split in ratio t:1-t.
 
 We can also use the new points calculated to split the curve into two separate curves; 
 This diagram shows which control points are used for two new Bezier curves, circled in white.
 
 ![](misc/Pasted%20image%2020231012204523.png)
+
 We use all the new points generated to the left/right side of the point, bar the middle ones, except for the point on the line.
 
 
@@ -170,7 +172,7 @@ Example: To convert from Bezier to B-spline: multiply control points by Bezier b
 
 ### Non-Uniform Rational Basis Splines (NURBS)
 
-Adds two more components - *homogeneous component* & the *knot vector*.
+Adds two more components - *homogeneous component* & the *knot vector*, to allow for more local control.
 
 Homogeneous component: (may know this as 'w' component in graphics) for adding weight to control points - allows fine control over shape of a curve towards a certain point.
 
