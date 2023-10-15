@@ -161,7 +161,7 @@ A B-spline curve is composed of B-splines joined together at common control poin
 B-splines allow better *local control* of a curve, but not the overall shape.
 
 
-**B-spline basis functions**: For splines of order *k*:
+**B-spline basis functions**: For splines of order *k*, calculated using **De Boor's algorithm**:
 
 ![](misc/Pasted%20image%2020231012212043.png)
 

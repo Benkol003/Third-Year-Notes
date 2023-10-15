@@ -121,10 +121,10 @@ x,y,& z add up to 1. (z not displayed on graph as z=1-x-y i.e. fixed).
 Because human eyes are sensitive to *ratios* of colour or light;
 For a linear encoding of intensity, human eyes are more sensitive to changes in dark light (Weber-Fechner law).
 
-**Gamma correction**: Uses a non-linear / power mapping for intensity values so that the *perceived intensity change* happens linearly. 
+**Gamma correction**: Uses a non-linear / power mapping for intensity values so that the *percieved intensity change* happens linearly. 
 
 You can see a linear encoding has larger banding at low intensity, but the gamma corrected version is consistent.
 
 ![](misc/Pasted%20image%2020231014165732.png) 
 
-For Gamma value $\gamma$, scaling occurs by $V_{out} = AV_{in}^\gamma$. (A is a scaling factor where usually $A=1$.) $\gamma=2.2$ is commonly used.
+For Gamma value $\gamma$, scaling occurs by $V_{out} = AV_{in}^\gamma$. ($A$ is a scaling factor where usually $A=1$.) $\gamma=2.2$ is commonly used.
