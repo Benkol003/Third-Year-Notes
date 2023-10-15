@@ -95,10 +95,10 @@ Types of realistic physics modelling methods:
 - Continuum Simulation
 - Rigid Body Simulation
 
-Commonly we have an **ordinary differential equation** which describes acceleration/velocity at time t; we numerically integrate these to calculate position across time, using e.g. Newtonian formulation.
+Commonly we have an **ordinary differential equation (ODE)** which describes acceleration/velocity at time t; we numerically integrate these to calculate position across time, using e.g. Newtonian formulation.
 
 ### Particles Simulation
-Use a lot of particles; generated from an *emitter*, e.g. a smoke source such as s gun muzzle. Then apply external forces; gravity, *procedural force* like wind; may have limited lifetime. Then add visual effects for rendering, e.g. fire particles.
+Use a lot of particles; generated from an *emitter*, e.g. a smoke source such as s gun muzzle. Then apply external forces; gravity, *procedural force* like wind; particles may also have limited lifetime. Then add visual effects for rendering, e.g. fire particles will be red light sources.
 
 May use particles for classical mechanics e.g. double pendulum. 
 
@@ -106,8 +106,8 @@ May use particles for classical mechanics e.g. double pendulum.
 
 1. $\vec{F}=m\vec{a}$
 2. $\vec{F} = m\frac{d^2\vec{x}}{dt^2}$
-3. $\overline{X}=\begin{pmatrix} \vec{x} \\ \vec{v} \end{pmatrix}$
-4. $\frac{d}{dt}\overline{X}=f(\overline{X},t) = \begin{pmatrix} \vec{v} \\ \vec{F}(\overline{X})/m \end{pmatrix}$
+3. $$\overline{X}=\begin{pmatrix} \vec{x} \\ \vec{v} \end{pmatrix}$$
+4. $$\frac{d}{dt}\overline{X}=f(\overline{X},t) = \begin{pmatrix} \vec{v} \\ \vec{F}(\overline{X})/m \end{pmatrix}$$
 
 We calculate the current force in the system using function $\vec{F}(\overline{X})$.
 
