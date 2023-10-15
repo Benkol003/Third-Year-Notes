@@ -106,8 +106,8 @@ May use particles for classical mechanics e.g. double pendulum.
 
 1. $\vec{F}=m\vec{a}$
 2. $\vec{F} = m\frac{d^2\vec{x}}{dt^2}$
-3. $\overline{X}=\begin{pmatrix} \vec{x} \\ \vec{v} \end{pmatrix}$
-4. ```math \frac{d}{dt}\overline{X}=f(\overline{X},t) = \begin{pmatrix} \vec{v} \\ \vec{F}(\overline{X})/m \end{pmatrix} ```
+3. $\overline{X} = \begin{pmatrix}\vec{x}\\\vec{v}\end{pmatrix}$
+4. $\frac{d}{dt}\overline{X}=f(\overline{X},t) = \begin{pmatrix}\vec{v}\\\vec{F}(\overline{X})/m\end{pmatrix}$
 We calculate the current force in the system using function $\vec{F}(\overline{X})$.
 
 given $\overline{X}$ and the function of its first derivative,$f(\overline{X},t)$, we can use numerical methods such as Euler, Verlet, RK4 to calculate  $\overline{X}_{t+h}$ after a timestep h from $\overline{X}_t$.
