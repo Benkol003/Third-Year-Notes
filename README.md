@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: _layout
 ---
 
 Third Year Module Notes.
