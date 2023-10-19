@@ -78,7 +78,7 @@ A function that assigns a higher probability to pieces of text that appear more 
 - 
 	For a sequence of tokens $w_1, w_2, ... w_L$, $p(w1,w2,...w_L)=p(w_1)p(w_2|w1)p(w_3|w_1, w_2)\ldots p(w_L|w1,\ldots w_{L-1})$
 	$\implies \prod\limits_{i=1}^{L} p(w_i|w1,\ldots w_{i-1})$
-	- **Markov Assumption** : A token is only independent on previous n (e.g. 2) tokens (bigram model):
+	- **Markov Chain of order n** : Assumption that a token is only independent on previous n (e.g. 2) tokens (bigram model):
 	$p(w_i|w_1,\ldots w_{i-1})=p(w_i | w_{i-1}, w_{i-2})$
 	$\implies p(w_{1:L}) = \prod\limits_{i=1}^{L}p(w_i|w_{i-1})$
 **N-gram probabilities**: We need a method to assign probabilities of occurence for our N-grams. Sophisticated methods can use

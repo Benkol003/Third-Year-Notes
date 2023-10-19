@@ -52,11 +52,4 @@ Check:
 - At least the two input pixels are drawn to memory.
 - Checking intermediary pixels - preset array or bresenham's algorithm in verilog? or precompute and compare later? - do this last if have time
 
-## Timeouts
-Howto implement?
 
-
-
-## Found Issues
-
-all units dont send the right colour to the framestore?
