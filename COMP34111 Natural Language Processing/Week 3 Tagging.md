@@ -84,14 +84,12 @@ By eliminating all except the best connections between two nodes we can clearly 
 
 ![](misc/Pasted%20image%2020231019004540.png)
 
-
-
 **Algorithm (in context of tagging)**:
 
 - First we need to be able to calculate transition probabilities - e.g. (as Markov chain order 1) use $P(t_i|t_{i-1},w_i,w_{i-1})$. 
 
 Starting from the first word, for all words $w_1,\dots w_n$:
-	For a possible tag $t_{i}=$<*tag*> for a given word $w_i$, we choose the out of all possible previous tags for $t_{i-1}$, the one that gives the highest probability for the sequence $t_1,\dots t_i$;  assuming we have previously calculated the probability of **best possible sequence to** $t_{i-1}$, represented $\delta_{t_{i-1}}$. Calculate as
+	For a possible tag $t_{i}=$\<*tag*\> for a given word $w_i$, we choose the out of all possible previous tags for $t_{i-1}$, the one that gives the highest probability for the sequence $t_1,\dots t_i$;  assuming we have previously calculated the probability of **best possible sequence to** $t_{i-1}$, represented $\delta_{t_{i-1}}$. Calculate as
 	$$\delta_{t_i} = \max\limits_{t_{i-1}} P(t_i|t_{i-1},w_i,w_{i-1})\delta_{t_{i-1}}$$
 We then work from the last word, picking the tag with the highest probability; $\hat{t_n}=\arg\max\limits_{t_n}\delta_{t_n}$, and then working backward to find best tags $\hat{t_{n-1}}=\arg\max\limits_{t_{n-1}}\delta_{t_{n-1}}$, etc. upto $\hat{t_1}$.
 
