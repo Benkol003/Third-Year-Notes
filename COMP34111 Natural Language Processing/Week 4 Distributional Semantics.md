@@ -22,7 +22,7 @@ VSM's are very high-dimensional sparse vectors - lot of terms equal to zero. Is 
 
 ### Latent Semantic Analysis / Singular Value Decomposition (SVD)
 
-Latent Semantic Analysis represents e.g. a Document-term matrix in a lower dimensional form, by (somehow) revealing relationships numerically, using **singular value decomposition**, which is a generalisation of **eigen decomposition**.
+Latent Semantic Analysis represents e.g. a Document-term matrix in a lower dimensional form, by (somehow) revealing relationships numerically, using **singular value decomposition**, which is a generalisation of **eigendecomposition**.
 
 #### SVD Method 
 Given our VSM matrix $M$, SVD calculates $M_{m\times n} = U_{m\times r}\Sigma_{r\times r} V_{n\times r}^T$, where $r\leq\min(m,n)$. $r$ is the minimum dimensionality possible to represent the data with.
@@ -49,13 +49,13 @@ The model runs continuously over text with it's context window + target word:
 
 ![](misc/Pasted%20image%2020231021193753.png)
 
-We use context words as features and the target word is predicted on the output layer.
-For our model we arbitrarily choose the word vector dimensionality as N.
-For a context window of size C, we have C input vectors.
-Input feature vectors are of size V, which are encoded using one-hot encoding.
-We share the same weight matrix $W_{V\times N}$ across all input features.
-The hidden layer is of size N; it's input is the average from all the context input features.
-The output layer is of size V. Logistic regression is used as the target word classifier.
+- We use context words as features and the target word is predicted on the output layer.
+- For our model we arbitrarily choose the word vector dimensionality as N.
+- For a context window of size C, we have C input vectors.
+- Input feature vectors are of size V, which are encoded using one-hot encoding.
+- We share the same weight matrix $W_{V\times N}$ across all input features.
+- The hidden layer is of size N; it's input is the average from all the context input features.
+- The output layer is of size V. Logistic regression is used as the target word classifier.
 
 
 ### Continuous Skip-gram model
@@ -68,8 +68,8 @@ Each context word is assigned in order to an output layer vector, to then perfor
 
 ### gloVe Model
 
-Has the following objective function:
+Uses a bilinear regression model with the following objective function:
 
 ![](misc/Pasted%20image%2020231021201522.png)
 
-TODO explain how training occurs
+Train using gradient descent to optimise the word and context word vectors.
