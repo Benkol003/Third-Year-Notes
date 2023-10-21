@@ -40,7 +40,7 @@ Example determiners: for a noun *car*:
 - **John Doe's** car
 - ***John's sister's brother's third cousin removed** car
 
-#### Nominals#
+#### Nominals
 Group of words in a NP containing the noun, and all of its pre- and post- modifiers.
 
 ![](misc/Pasted%20image%2020231020011446.png)

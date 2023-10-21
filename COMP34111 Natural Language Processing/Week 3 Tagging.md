@@ -42,6 +42,7 @@ POS taggers must resolve ambiguity given the context of the token. This can be d
 - **Rule-based tagger**: uses pre-written rules such as phrase structures to be able to assign tags in ambiguous cases.
 - **Stochastic taggers**: Uses probability (e.g. bayes rule for surrounding words or) to find the most likely tag/sequence of tags.
 - **Transformation taggers/Brill tagger algorithm**: Takes an existing stochastic tagger, and then is applied to training data; we then identify words that have been incorrectly tagged, and we form *transformational rules* to correct these errors.
+- Hidden Markov Models, Recurrent Neural Networks
 
 #### Rule-based Taggers
 Process:
