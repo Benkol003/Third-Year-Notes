@@ -27,7 +27,7 @@ For doing WSD on the word **bank**, from dictionary definitions you can see we h
 
 
 #### WSD naïve bayes classifier
-For an input sample of text (ambiguous word and context words) x, and a possible sense class y, calculate joint probability $P(x,y)
+For an input sample of text (ambiguous word and context words) x, and a possible sense class y, calculate joint probability $P(x,y)$
 
 $P(word|class)=\frac{count(word,class)+1}{count(class) + |V|}$  - +1 and |V| (vocabulary size) for additive smoothing/never non-zero probability - lowest is $\frac{1}{|V|}$.  
 

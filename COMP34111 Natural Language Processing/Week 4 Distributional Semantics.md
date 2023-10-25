@@ -41,7 +41,7 @@ These models have a **predictive task** which predicts the occurring word given 
 
 Example Models:
 - Word2Vec - Two models - Predicts either the target word (continuous bag-of-words model) or the surrounding context words (continuous skip-gram model).
-- gloVe - Aims to predict occurrences of words within the context of a target word; It considers relations between only pairs of words.
+- [gloVe](https://nlp.stanford.edu/projects/glove/) - Aims to predict occurrences of words within the context of a target word; It considers relations between only pairs of words. 
 
 ### Continuous Bag-of-Words model (CBOW)
 
