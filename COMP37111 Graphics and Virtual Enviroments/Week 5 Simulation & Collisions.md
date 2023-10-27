@@ -26,6 +26,7 @@ Each arm has 6 DOF; however the joint has a *joint constraint*; only 1 DOF being
 
 ### Deformable Object Simulation
 Used for simulation of elastic materials:
+
 ![](misc/Pasted%20image%2020231026164419.png)
 
 #### Finite Element Methods (FEM)
@@ -33,13 +34,19 @@ This is used to compute partial differential equations over time;
 
 #### Tetrahedralization
 We take a 3D object and decompose into 3D tetrahedrons (similar to triangulation).
+
 ![](misc/Pasted%20image%2020231027130833.png) ![](misc/Pasted%20image%2020231027130904.png)
+
 Tetrahedron:
+
 ![](misc/Pasted%20image%2020231027131013.png)
+
 We then use FEM to calculate forces/impulses that cause tetrahedron deformation:
+
 ![](misc/Pasted%20image%2020231027131129.png)
 
 #### Fracture & Cloth simulations
+
 ![](misc/Pasted%20image%2020231027133650.png)
 ![](misc/Pasted%20image%2020231027133702.png)
 
@@ -65,12 +72,17 @@ These use both models simultaneously, where we usually model most of the mass of
 
 #### Detecting Collisions
 Because we are checking for collisions are discretized timesteps (every frame), we will detect collisions after they occur.
+
 ![](misc/Pasted%20image%2020231027141354.png)
+
 Therefore once we detect a collision, we can:
 
 1. backtracking to the time when the collision occurred.
+2. 
 ![](misc/Pasted%20image%2020231027141447.png)
+
 2. Fixing the position to the surface at the time we detect the collision. Is more of a hack and is inaccurate, but computationally faster.
+
 ![](misc/Pasted%20image%2020231027141540.png)
 
 ### Pruning possible colliding objects.
@@ -82,15 +94,21 @@ For N objects, we can naively assume that they may all possibly collide with eac
 ### Bounding Volumes
 Method to allow us to efficiently check whether two objects are overlapping (& therefore have collided). We encase the object mesh in a bounding volume, which can be different shapes.
 Listed in increasing complexity order (For checking collisions):
+
 ![](misc/Pasted%20image%2020231027142411.png)
+
 They are very efficient especially where we have an object with a mesh of complex geometry.
+
 ![](misc/Pasted%20image%2020231027142554.png)
+
 However calculating the exact time/point of intersection is inaccurate as is, so we usually use backtracking after this.
 
 #### Bounding Volume Hierarchies (BVH's)
+
 ![](misc/Pasted%20image%2020231027142920.png)
 
 For a complex object we can have bounding volumes within a larger bounding volumes for more accurate collision detection; as it allows us to calculate a local area on the mesh where the collision occurs; called a **Bounding Volume Hierarchy (BVH)**.
 These are also more typically used to have bounding volumes to encase groups of objects that are close together, and check to see if there are collisions with that group.
+
 ![](misc/Pasted%20image%2020231027143409.png)
 
