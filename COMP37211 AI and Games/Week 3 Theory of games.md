@@ -1,4 +1,7 @@
-TODO add more maths examples if needed.
+
+**Strategy**: A very basic strategy may just be a static **sequence of moves** to the end of a game;
+However more generally it can mean a set of rules, that may change the moves we take dynamically in a game dependent on the opponent's moves/*information set*).
+(Mr Shapiro has not distinguished between the two very well)
 
 #### Best Response
 Given a **fixed opponent strategy**, is the strategy that rewards the player with the best outcome.
@@ -19,6 +22,8 @@ Distinctions:
 Each player makes the best decision possible, knowing their opponent's strategies; and no player has an incentive to change their strategy (for a better outcome) given their opponents strategies (this is the equilibrium). **Is not** having a best strategy/solved game - an opponent may have a non-optimal strategy.
 
 **Solving a zero-sum game of perfect information & no chance** means finding the Nash equilibrium of that game.
+
+**Lemske-Howson algorithm**: Calculates the nash equilibrium of a general-sum game with two players & finite number of moves.
 
 #### Mixed strategy
 Used for games that don't have a *pure (deterministic) strategy* nash equilibrium.

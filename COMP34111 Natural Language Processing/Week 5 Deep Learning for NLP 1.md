@@ -38,7 +38,6 @@ A **single layer perceptron** directly connects the input to the output layer.
 
 For k words in the context, we take their word vectors $x_1,x_2,\dots x_k$ and concatenate the features together to form the input for the network as $x = [x1,\dots x_k]$.
 
-
 ### Recurrent Neural Networks
 
 #### Representation of one layer in RNN

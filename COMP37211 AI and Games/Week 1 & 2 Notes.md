@@ -26,13 +26,13 @@ If a prisoner snitches it is not always the case that their jail time is reduced
 ### Game Representations
 
 #### Game in Normal Form
-This represents the final scores of players for a given strategy/sequence of moves in a form of a matrix, where each entry denotes the final score. This is used for games of simultaneous play; Or for sequential games the sequence of moves is chosen in advance and we do not consider any kind of in-game strategy.
+This represents the final scores of players for a given sequence of moves in a form of a matrix, where each entry denotes the final score. This is used for games of simultaneous play; Or for sequential games the sequence of moves is chosen in advance and we do not consider any kind of in-game strategy.
 
 Rock-Paper-Scissors game in normal form:
 
 ![](misc/Pasted%20image%2020231005121933.png)
 
-Normal form is mathematically convenient, (as we have all possible strategies), but computationally inefficient - it is impossible to do so for chess.
+Normal form is mathematically convenient, (as we have all possible moves), but computationally inefficient - it is impossible to do so for chess.
 
 #### Game Tree
 This is also known as *extensive form*.

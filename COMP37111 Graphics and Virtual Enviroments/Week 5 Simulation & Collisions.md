@@ -21,6 +21,7 @@ We can also stack multiple objects to be in rest as the same time.
 #### Articulated rigid body simulation
 
 ![](misc/Pasted%20image%2020231026162754.png)
+
 Used for simulation of humans, robots, cars...
 Each arm has 6 DOF; however the joint has a *joint constraint*; only 1 DOF being the rotation/angle between the two arms in one axis. The articulated system has a total of 7 DOF.
 

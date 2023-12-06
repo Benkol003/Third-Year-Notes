@@ -43,7 +43,8 @@ Example Models:
 - Word2Vec - Two models - Predicts either the target word (continuous bag-of-words model) or the surrounding context words (continuous skip-gram model).
 - [gloVe](https://nlp.stanford.edu/projects/glove/) - Aims to predict occurrences of words within the context of a target word; It considers relations between only pairs of words. 
 
-### Continuous Bag-of-Words model (CBOW)
+### Word2Vec Models
+#### Continuous Bag-of-Words model (CBOW)
 
 The model runs continuously over text with it's context window + target word:
 
@@ -58,7 +59,7 @@ The model runs continuously over text with it's context window + target word:
 - The output layer is of size V. Logistic regression is used as the target word classifier.
 
 
-### Continuous Skip-gram model
+#### Continuous Skip-gram model
 This is works in a similar manner to CBOW.
 
 ![](misc/Pasted%20image%2020231021195112.png)
@@ -67,7 +68,7 @@ Note the model has to predict context words in the *correct order*.
 Each context word is assigned in order to an output layer vector, to then perform backpropagation.
 
 ### gloVe Model
-
+https://nlp.stanford.edu/projects/glove/
 Uses a bilinear regression model with the following objective function:
 
 ![](misc/Pasted%20image%2020231021201522.png)
