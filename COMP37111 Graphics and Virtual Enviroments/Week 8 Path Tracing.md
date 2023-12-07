@@ -28,6 +28,7 @@ But for reflective surfaces will produce noisy specular highlights, ideally you 
 *Importance sampling* will use a *probability distribution function* (PDF) based on the form of the surface BRDF.
 
 You can see that the image noise with a higher number of samples:
+
 ![](misc/Pasted%20image%2020231203162639.png)
 
 and you can notice this effect if you have a complex scene in blender and move the camera around.
@@ -38,6 +39,7 @@ Ray tracing methods, especially path tracing, take an especially long time to re
 
 The ray traced lighting can be baked into textures such as this floor plane here; 
 TODO how is it done? I'm presuming on the texture we store the colour for rays sent from the ray to the texture, or we could do path tracing from each pixel?
+
 
 ![](misc/Pasted%20image%2020231203180719.png)
 
