@@ -146,7 +146,3 @@ BERT: bidirectional RNN model used to produce word embeddings for words given le
 
 We stack RNN's with single connection between layers at the same depth; akin to single vs multi-layer perceptron's; Gives better performance and can have a more complex trained model; Most don't exceed 4 stacked RNN's.
 
-
-#### Attention Mechanisms in RNN's
-https://medium.com/swlh/a-simple-overview-of-rnn-lstm-and-attention-mechanism-9e844763d07b
-TODO attention mechanism/layer in RNN's (is this old content?)
