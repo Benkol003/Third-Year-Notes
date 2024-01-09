@@ -5,7 +5,6 @@ This topic is mainly concerned with this [paper](https://arxiv.org/abs/1706.0376
 ## Attention Mechanisms
 ### Classical Attention formulation, for an RNN
 
-https://www.youtube.com/watch?v=mDZil99CtSU&t=795s
 
 ![](misc/Pasted%20image%2020231207194114.png)
 
@@ -36,6 +35,7 @@ Our whole RNN looks like this to formulate the entire output sequence:
 
 
 - [Inner product](https://en.wikipedia.org/wiki/Frobenius_inner_product) - takes two matrices (of the same size) and produces a scalar; multiplies elements at the same position together and sums the elements.
+- 
 ![](misc/Pasted%20image%2020231207205929.png)
 
 ![](misc/Pasted%20image%2020231207205941.png)
@@ -68,7 +68,7 @@ We calculate the attention mechanism multiple times, using learnt *linear projec
 
 In practice we use the same linear projection matrix for all heads (in the transformer model).
 
-(Presumably the attention head matrices are parameters to be learnt via backpropagation during training.)
+(TODO Presumably the attention head matrices are parameters to be learnt via backpropagation during training???)
 
 ![](misc/Pasted%20image%2020231208015117.png)
 
@@ -164,4 +164,4 @@ https://huggingface.co/blog/bert-101#3-bert-model-size--architecture
 - The number of attention is for multi-head attention.
 - Hidden size is the size of the internal word embeddings.
 
-How does bert create positional embeddings? it only has input id's to work with a vocabulary
+BERT uses *WordPiece embeddings* which has input embeddings & combines with positional embeddings, based upon token id's

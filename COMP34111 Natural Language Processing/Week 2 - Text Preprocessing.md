@@ -1,3 +1,5 @@
+Free NLP [book!](https://web.stanford.edu/~jurafsky/slp3/)
+
 ### Language identification and Genre/Domain
 Identify the language being used in the text (English), and the area of discourse for the material (news, computer science).
 

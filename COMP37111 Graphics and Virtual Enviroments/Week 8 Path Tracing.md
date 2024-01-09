@@ -20,7 +20,7 @@ A naïve way to model this is when reflecting a ray, to add some noise within a 
 
 ### Path Tracing
 (Also appears in Kajiya’s original paper for the rendering equation.)
-([Youtube video](https://www.youtube.com/watch?v=NIpC53vesHo&t=1255s) comparing ray and path tracing.)
+([Youtube video](https://www.youtube.com/watch?v=NIpC53vesHo) comparing ray and path tracing.)
 ([Game dev blog](https://www.scratchapixel.com/lessons/3d-basic-rendering/global-illumination-path-tracing/global-illumination-path-tracing-practical-implementation.html))
 This improves upon the previous point by producing multiple reflected rays in a range; we use a *Monte Carlo* approach and the angles of the reflected rays are chosen *randomly*.
 Naively we would use a uniform random distribution in all directions; this is ideal for diffuse surface.
