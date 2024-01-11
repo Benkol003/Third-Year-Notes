@@ -50,7 +50,7 @@ However we must guarantee that no logic path in the first stage takes less than 
 #### Transparent latches
 We could also use a *latch*, which captures it's input when the clock is high, rather than on the clock edge; the signal from the first stage will be complete 100ps into the 'clock high' signal.
 
-
+TODO
 
 ### Clock domains
 
