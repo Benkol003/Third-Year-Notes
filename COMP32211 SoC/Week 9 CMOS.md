@@ -30,19 +30,21 @@ Note that source & drain are the same as the MOSFET is symmetrical on silicon.
 - Gate, $V_g$ - potential voltage controls current flow across the MOSFET.
 - Substrate (optional): Used to control the *body effect* - we can change the threshold voltage.
 
+- $V_{dd}$ & $V_{ss}$ denote source and drain power supply voltage. Typically $V_{ss}$ is connected to ground / 0Vand $V_{dd}$ to power source ($V_{cc}$).
 
 Diagram of NMOS/PMOS silicon:
 
 ![](misc/Pasted%20image%2020240110175007.png)
 
-- Gate Oxide or *dielectric*
+- Gate Oxide known as a *dielectric*; It is an electrical insulator but is also capable of transmitting the electric field from the gate to the bulk to attract charge carriers - known as *polarisation*; negative/positive charges in the material orient towards the positive/negative terminal. Dielectrics are a key component in capacitors as transmitting the electric field is what keeps the opposite polarity charges held by each other in the plates.
 - The top of the CMOS is coated in an insulator (silicon dioxide)
 
-Transistors are connected through metal *interconnects* made of copper; there are multiple layers of interconnects for different parts of the circuit, with interconnects joined vertically through layers.
+#### Depletion Region
+TODO
+![](misc/Pasted%20image%2020240112131322.png)
 
-![](misc/Pasted%20image%2020240111014604.png)
+When below the threshold voltage opposite charge , creates a barrier of very high resistance. When we apply our gate voltage the depletion region shrinks, lowering the resistance, allowing current to flow. (However the depletion region never fully disappears).
 
-[Notes on CMOS lithography process](https://www3.nd.edu/~kogge/courses/cse60742-Fall2018/Public/Files/KernelPaper/CMOS_Process.pdf).
 
 A MOSFET can be in *enhancement or depletion mode*, depending on the following voltage relationships:
 
@@ -70,6 +72,12 @@ Effectively in our CMOS logic you will see PMOS transistors conduct at logical l
 - By using both PMOS and NMOS we can guarantee that CMOS will always have a low resistance s.t. our logic signal are always strongly driven; therefore low power dissipation (/voltage drop) across the CMOS circuitry; CMOS only has high power usage during switching & higher clock frequencies ~ higher power draw.
 - 
 - NMOS is good at transmitting a 0 and PMOS good for 1; however they are bad at transmitting the opposite bit as the transistor as the transistor turns off / approaches being an (undesirable) open circuit / high resistance.
+
+- Transistors are connected through metal *interconnects* made of copper; there are multiple layers of interconnects for different parts of the circuit, with interconnects joined vertically through layers.
+
+![](misc/Pasted%20image%2020240111014604.png)
+
+[Notes on CMOS lithography process](https://www3.nd.edu/~kogge/courses/cse60742-Fall2018/Public/Files/KernelPaper/CMOS_Process.pdf).
 
 #### CMOS Inverter
 
