@@ -137,7 +137,7 @@ Mathematical definition of how smooth the connectivity of two curves is.
 
 **G1 continuity**: At the joint point, the curves share a first derivative that is in the same direction, but *not necessarily* the same magnitude.
 
-**C2 continuity**: Aswell as being C1 continuous the second derivatives (acceleration, centre of curvature) for the curves at the join are also equal.
+**C2 continuity**: Aswell as being C1 continuous the second derivatives (acceleration or centre of curvature) for the curves at the join are also equal.
 
 ![](misc/Pasted%20image%2020231012210752.png)
 

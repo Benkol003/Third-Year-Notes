@@ -140,8 +140,6 @@ Example vector field with trajectory:
 
 ![](misc/Pasted%20image%2020231015171424.png)
 
-
-
 #### Cloth & Hair simulations
 These are notoriously difficult (computationally and mathematically) to do properly.
 

@@ -58,6 +58,8 @@ We use *pass transistors* (switch) on the voltage supply & ground to turn off ga
 
 #### FinFETs
 
+[Intel link](https://download.intel.com/newsroom/kits/22nm/pdfs/22nm-Details_Presentation.pdf)
+
 ![](misc/Pasted%20image%2020240112134523.png)
 
 The gate lies on multiple sides of the channel / substrate body which is in a fin shape, such that the gate is more efficient (more electric field around the channel); switching speed is increased & subthreshold leakage reduced.

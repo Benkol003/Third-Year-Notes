@@ -21,7 +21,10 @@ Integral Terms:
 Typically with a BRDF the light intensity of light will also decrease with more oblique angles, however this is a property of the reaction of the surface material; The weakening factor is doing this to model *Lambert's cosine law*.
 
 Which can be seen as thus:
-![](misc/Pasted%20image%2020231201222350.png) ![](misc/Pasted%20image%2020231201222411.png)
+![](misc/Pasted%20image%2020231201222350.png) 
+
+![](misc/Pasted%20image%2020231201222411.png)
+
 #### Rendering equation with full parameters
 We can introduce extra parameters:
 - $\lambda$, wavelength - we can model for e.g. RGB wavelengths, or for the full spectrum. 
