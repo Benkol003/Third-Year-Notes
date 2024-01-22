@@ -69,3 +69,5 @@ as the probabilities where $U^{(1)}=K$.
 
 
 TODO epsilon closure -tends to actual value towards infinity
+
+(ok, doing the problem sets & looking at the answers gives a better demonstration of finding equilibrium from normal form tables)
