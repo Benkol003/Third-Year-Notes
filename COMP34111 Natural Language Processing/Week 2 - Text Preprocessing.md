@@ -94,7 +94,7 @@ N-gram models can generate text; trigram models produce most readable (but nonse
 
 **Overfitting**: The test dataset often does not look like the training dataset. There are methods to mitigate this:
 1. Laplace smoothing: tackles problem of words that are unseen in training dataset having a 0 probability.
-	$$P^*(w_n|w_{n-1}) = \frac{Count(w_{n-1}w_n))}{Count(w_{n-1}+ |V|)})$$
+	$$P^(w_n|w_{n-1}) = \frac{Count(w_{n-1}w_n))}{Count(w_{n-1})+ |V|})$$
 	(|V| denotes vocabulary size)
 
 2. **Backoff**: Use different N-gram in different contexts: use trigram if have evidence that it will work, otherwise bigram, otherwise unigram
@@ -108,6 +108,24 @@ N-gram models can generate text; trigram models produce most readable (but nonse
 	2. (Optional) replace (ideally low-probability/unsignificant), words to replace with \<UNK> token. Could be randomly chosen or all those below a certain probability threshold.
 	3. When training probabilistic model, all unknown tokens are counted as \<UNK>
 	4. When decoding on test data replace unrecognised tokens with \<UNK>, calculate probability accordingly.
+
+
+
+### Bayes Classifier for text classification
+
+Given the assumption of independent features $x$, given classes $C$:
+
+![](misc/Pasted%20image%2020240123221534.png)
+
+- our words are $x$ from a vocabulary $V$ (size $|V|$)
+- $n$ classes $C1, \dots C_k \dots C_n$; can assume equal probability of occurrence $\forall k | P(C_k) = \frac{1}{n}$; or we can use $p(C_k)=\frac{\text{Count(samples of class k)+1}}{\text{Count(total number of per-class text samples) + n}}$ (this is with regularisation terms 1 & $n$)
+- for any word $w_i$, $p(w_i|C_k)$ = Count of all occurrences of $w_i$ in text samples of class $C_k$ + 1 / occurrences of $w_i$ in all text samples + $|V|$. Allow for counting duplicates of words in samples; regularisation terms 1 & $|V|$
+ 
+Example:
+
+- Note should be written as $p(jam1|{traffic,work,busy})$ not the other way around for the condition.
+
+![](misc/Pasted%20image%2020240123221607.png)
 
 
 

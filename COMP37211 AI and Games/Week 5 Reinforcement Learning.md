@@ -42,6 +42,7 @@ Typically we decrease epsilon over time as our model becomes better trained and 
 (we have $n$ machines)
 
  Maintain a value table V:
+ 
 ![](misc/Pasted%20image%2020240121200359.png)
 
 Epsilon-greedy choice of playing best-value machine vs exploration:
@@ -184,7 +185,7 @@ Typically we only update $V(s_t)$ after an opponent has made a move, as they inf
 - TD($\lambda$) learning, when a reward is received, we don't just update the current state / state-action pair, but previous ones before that aswell; but with reduced updated reward the further we go back, parameterised with $\lambda$ value.
 - Q-learning is an example of TD(0) Learning.
 - Algorithm:
-- 
+
 ![](misc/Pasted%20image%2020240121231925.png)
 
 TD($\lambda$) learning improves learning speed (over Q-learning) as we update more values at once
@@ -192,7 +193,7 @@ TD($\lambda$) learning improves learning speed (over Q-learning) as we update mo
 #### Eligibility traces
 [Useful site](http://www.incompleteideas.net/book/ebook/node72.html)
 
-In $TD(\lambda)$ learning, our elegibility trace parameter is $\lambda$. another way to view the TD($\lambda$) algorithm is to calculate 'elegibility' at each time step:
+In $TD(\lambda)$ learning, our eligibility trace parameter is $\lambda$. another way to view the TD($\lambda$) algorithm is to calculate 'eligibility' at each time step:
 
 ![](misc/Pasted%20image%2020240121233613.png)
 
