@@ -11,13 +11,13 @@ Break down language into a whitespace-delimited sequence. However some languages
 	Manchester-based - is this one or two tokens?
 	Possesives: Tory's fuckup - The two words are associated but also seperate tokens in their own right
 
-There are no hard rules for how to peform tokenization, however it is important to be **consistent** throughout your system, and knowing where to *split*, not when to combine (which is double the work) - avoid over-splitting.
+There are no hard rules for how to perform tokenization, however it is important to be **consistent** throughout your system, and knowing where to *split*, not when to combine (which is double the work) - avoid over-splitting.
 
 #### Normalisation
 - Walk, walking, walked - we could consider these equivalent.
 - Case folding i.e. convert to lowercase - important in some situations e.g. search engines.
 
-- **Lemmetisation**: This is computationally intensive. We also have an issue when a word appears that is not in the dictionary (Out-of-Dictionary, OOV).
+- **Lemmatisation**: This is computationally intensive. We also have an issue when a word appears that is not in the dictionary (Out-of-Dictionary, OOV).
 	  {am,are,is} -> be.
 	  {ball, balls, ball's, balled} -> ball
 - **Morphological Analysis**: Words are not the most basic unit of text, instead we have *morphemes* - prefix, suffix, stem. 

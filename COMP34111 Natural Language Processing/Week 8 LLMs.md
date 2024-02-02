@@ -31,7 +31,7 @@ Helps BERT build relationships between words
 
 1. Randomly select 15% of token positions.
 2. For each position:
-	- 10% probability we dont change the word
+	- 10% probability we don't change the word
 	- 80% probability replace with *[MASK]* token
 	- 10% probability replace with random token/word
 
