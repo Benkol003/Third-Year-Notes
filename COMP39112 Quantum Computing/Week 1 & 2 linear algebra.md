@@ -37,7 +37,7 @@ The last two terms may not be positive - this would be *destructive interference
 
 The Probability is still $1/2$ in the quantum case but causes destructive interference that changes the probabilities.
 
-### Vector Space
+## Vector Space
 
 - A n-dimensional vector is an array of $n$ scalar elements or *field*, e.g. real ($\mathbb{R}$) or complex ($\mathbb{C}$) elements
 - A *vector space* is akin to a number space like $\mathbb{N}$ - space of all possible vector values that can exist. 
@@ -49,7 +49,7 @@ The Probability is still $1/2$ in the quantum case but causes destructive interf
 
 A you see yet we do not have an axiom to allow for multiplication:
 
-### Inner Product Space
+## Inner Product Space
 
 - An inner product operator for a vector space takes two vectors & returns a scalar - i.e. it is a generalisation :
 
@@ -68,7 +68,9 @@ A you see yet we do not have an axiom to allow for multiplication:
 Bra's have multiple interpretations:
 - as we know $\braket{a|b}$ is the inner product of two vectors - $\bra{a}$ represents the conjugate transpose of $\ket{a}$; i.e. $\bra{a}=[a_1*,a_2*,\dots]$ & $\ket{a}=\begin{bmatrix} a_1 \cr a_2 \cr \dots \end{bmatrix}$. This also performs our dot product of the the two vectors $\braket{a|b}$ as we treat it as matrix multiplication.
 - $\bra{f}$ can also denote a function that is a map $f: \mathbb{C}^n \rightarrow \mathbb{C}$, also called a *linear form, linear functional, covector*.
-### Complex Inner Product Space
+
+- $\ket{a}\bra{b}$ denotes a *dyad*, which produces a matrix. 
+## Complex Inner Product Space
 
 We will denote this $H$. The normal vector space axioms apply (provided in dirac notation):
 
@@ -91,7 +93,7 @@ We will use the following $L_2(K)$ function again in the course.
 ![](misc/Pasted%20image%2020240202164620.png)
 
 
-### Basis
+## Basis
 
 ![](misc/Pasted%20image%2020240202164818.png)
 
@@ -105,8 +107,9 @@ i.e. we can use our basis to reach any vector in vector space $V$.
 - Our coefficients $a_1,\dots a_n \in F$ are co-ordinates
 
 #### Orthogonality
-We have an orthogonal basis $B$ iff $\forall(\ket{x_i}\in B)$ $\forall (\ket{x_j}\in B)$ $\braket{x_i|x_j} = \left\{ \begin{array}{} ||x_i|| & i=j \\ 0 & i\ne j \end{array}\right.$
-i.e. two distinct vectors have a dot product of 0 or are at 'right angles' to each other
+We have an orthogonal basis $B$ iff $\forall(\ket{x_i}\in B)$ $\forall (\ket{x_j}\in B)$ $\braket{x_i|x_j} =\delta_{ij}= \left\{ \begin{array}{} ||x_i|| & i=j \\ 0 & i\ne j \end{array}\right.$
+- $\delta_{ij}$ is also known as the **Kronecker delta function**.
+i.e. all combinations of two distinct basis vectors have a dot product of 0 i.e. are at 'right angles' to each other.
 
 #### Orthonormality
 We have an orthonormal basis $B$ iff it is  orthonormal & $\forall(\ket{x_i}\in B)\ \|x_i\|=1$. We can easily normalise an orthogonal basis by multiplying each basis vector by $\frac{1}{\|x_i\|}$.
@@ -115,7 +118,7 @@ We have an orthonormal basis $B$ iff it is  orthonormal & $\forall(\ket{x_i}\in 
 Where we have a 1 value in different dimensions for each basis vector:
 ![](misc/Pasted%20image%2020240202185657.png)
 
-### Linear Operators
+## Linear Operators
 
 A linear operator maps between vector spaces / maps a vector to a vector
 
@@ -127,7 +130,7 @@ Example Operators:
 
 ![](misc/Pasted%20image%2020240202174422.png)
 
-- The identity operator is the same as the identity matrix - 
+- The identity operator is the same as the identity matrix
 
 Note for $L_2(\mathbb{R}$):
 
@@ -141,7 +144,7 @@ Example 5:
 
 ![](misc/Pasted%20image%2020240202174938.png)
 
-### Pauli Matrices
+## Pauli Matrices
 
 Can also define operators as matrices:
 
@@ -165,7 +168,7 @@ They follow these rules:
 
 ![](misc/Pasted%20image%2020240202175347.png)
 
-### Operator composition
+## Operator composition
 
 ![](misc/Pasted%20image%2020240202184424.png)
 
@@ -174,7 +177,7 @@ They follow these rules:
 By using taylor series we can compose a linear operator $A$ with another operator e.g. $e^x$:
 
 The following taylor series all converge for $|x|<1$.
-
+eeeeeeeeeeeeeeeeeeeeeeeeeeererereee
 ![](misc/Pasted%20image%2020240202184256.png)
 
 ![](misc/Pasted%20image%2020240202184459.png)
@@ -183,7 +186,7 @@ Using the Pauli matrix identities to simplify:
 
 ![](misc/Pasted%20image%2020240202184840.png)
 
-### Matrix elements
+## Matrix elements
 
 ![](misc/Pasted%20image%2020240202193331.png)
 
@@ -204,14 +207,16 @@ $\ket{j}\bra{k}$ produces a matrix as we multiply a row vector by column - $n\ti
 - The identity operator is defined $I=\Sigma_k\ket{k}\bra{k}$
 - Projection operator: Given a subspace $\Lambda$ spanned by basis $\{\ket{l}\}_{l=0\dots t}$, $P_\Lambda=\sum_l\ket{l}\bra{l}$  TODO what is this     
 
-### Operator special properties
+## Matrix/Operator properties
 
 We previously defined the adjoint of an operator $A^\dagger = (A^T)^*$. All linear operators on a inner product space will always have an existing adjoint operator.
 
 So it follows that $\braket{y|Ax}=\braket{A^\dagger y|x}$. i.e.  if for $A$ we have $\ket{j}\bra{k}$, $A^\dagger$ is $\ket{k}\bra{j}$.
+- 
 Then $(\lambda A + \mu B)^\dagger=\lambda^*A^\dagger+\mu^*B^\dagger$.
 
-- An operator is **normal** iff $A^\dagger A=AA^\dagger$.
+- An operator is **normal** iff $A^\dagger A=AA^\dagger$ & therefore $U^{-1}=U^\dagger$.
+- A matrix is **symmetric** iff $A=A^T$.
 - An operator is **unitary** iff $A^\dagger A=I=AA^\dagger$, & preserves the inner product.
 - An operator is **hermitian** or **self-adjoint** iff $A=A^\dagger$. i.e. the operator is it's own complex conjugate - they form a real vector space. These operators serve as real-world observables in quantum mechanics e.g. position, energy, momentum.
 
@@ -226,6 +231,58 @@ Conversely for a unitary operator $U$ there exists hermitian $A$, called *genera
 
 ![](misc/Pasted%20image%2020240202212409.png)
 
-### Diagonalisation
+## Diagonalisation
 
 Given an operator $A$, a **nonzero** vector $\ket{v}$ is an **eigenvector** of $A$ with **eigenvalue** $\lambda$ iff $A\ket{v}=\lambda\ket{v}$. 
+
+**Warning** - the notes use $v$ to denote eigenvalues but also $\ket{v}$ for eigenvectors which I think is confusing
+
+Visual example of eigenvectors:
+
+![](misc/Pasted%20image%2020240202214330.png)
+
+This can be rewritten as $(A-\lambda I)\ket{v}=0$. (If v is nonzero then $det(A-\lambda I)=0$ (TODO why).)
+
+#### Matrix Determinant
+function of a *square* matrix to produce a scalar value; obeys rules:
+
+- Determinant is non-zero if matrix is invertible
+
+ ![](misc/Pasted%20image%2020240202223552.png)
+
+and rules 2-4 also apply to columns
+
+Can be calculated for small matrices thus:
+
+![](misc/Pasted%20image%2020240202223725.png)
+
+Calculating the determinant is computationally hard with [*Leibniz formula*](https://en.wikipedia.org/wiki/Leibniz_formula_for_determinants), we use a speedup called [*LU decomposition*](https://en.wikipedia.org/wiki/LU_decomposition). [notes](https://www.math.ucdavis.edu/~linear/old/notes11.pdf).
+
+### Eigendecomposition
+The *Characteristic Equation* is $det(A-\lambda I)=0$, we solve to find eigenvalues $\lambda$. We then solve $(A-\lambda I)\ket{v}=0$ to find the eigenvectors. We can then say 
+$A=Q\Lambda Q^{-1}$, with
+- $Q$ - matrix where i'th column corresponds to eigenvector $\ket{v_i}$.
+- $\Lambda$ diagonal matrix with i'th diagonal value as eigenvalue $\lambda_i$.
+
+#### Diagonalisation / SVD
+
+Iff matrix A is a normal matrix, then the eigendecomposition of A can be written as $A=\sum_iv_i\ket{v_i}\bra{v_i}$, and the eigenvectors $\forall i$, $\ket{v_i}$ form an orthonormal basis across this space.
+
+This is basically a restatement of [*Singular Value Decomposition*](https://en.wikipedia.org/wiki/Singular_value_decomposition) or *diagonalisation*; TODO (optional) cover the proof.
+
+- For unitary $U$, also $\forall i$, $|v_i|=1$. ($v_i$ - eigenvalue)
+- For hermitian $A$ also $\forall i$ $v_i$ all eigenvalues are real.
+(Both unitary and hermitian imply normal)
+
+Proof of the hermitian statement:
+
+![](misc/Pasted%20image%2020240205200632.png)
+
+In the proof we substitute $\frac{1}{2!}(i\lambda)^2(\sum_iv_i\ket{v_i}\bra{v_i})^2=(\sum_i\frac{1}{2!}(i\lambda v_i)^2\ket{v_i}\bra{v_i})$. We don't have squaring of the dyads due to the properties of our eigenvectors being orthonormal i.e. $\braket{v_1|v_1}=1$,$\braket{v_1|v_2}=0$. 
+
+![](misc/Pasted%20image%2020240205201750.png)
+
+### Change of orthonormal basis
+
+An operator we wish to use will usually have a different orthonormal basis we are working with; so lettuce change to our basis.
+Given two o
