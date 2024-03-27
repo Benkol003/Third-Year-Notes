@@ -177,7 +177,7 @@ They follow these rules:
 By using taylor series we can compose a linear operator $A$ with another operator e.g. $e^x$:
 
 The following taylor series all converge for $|x|<1$.
-eeeeeeeeeeeeeeeeeeeeeeeeeeererereee
+
 ![](misc/Pasted%20image%2020240202184256.png)
 
 ![](misc/Pasted%20image%2020240202184459.png)
@@ -278,11 +278,119 @@ Proof of the hermitian statement:
 
 ![](misc/Pasted%20image%2020240205200632.png)
 
-In the proof we substitute $\frac{1}{2!}(i\lambda)^2(\sum_iv_i\ket{v_i}\bra{v_i})^2=(\sum_i\frac{1}{2!}(i\lambda v_i)^2\ket{v_i}\bra{v_i})$. We don't have squaring of the dyads due to the properties of our eigenvectors being orthonormal i.e. $\braket{v_1|v_1}=1$,$\braket{v_1|v_2}=0$. 
+In the proof we substitute $\frac{1}{2!}(i\lambda)^2(\sum_iv_i\ket{v_i}\bra{v_i})^2=(\sum_i\frac{1}{2!}(i\lambda v_i)^2\ket{v_i}\bra{v_i})$. We don't have squaring of the dyads due to the properties of our eigenvectors being orthonormal i.e. $\braket{v_1|v_1}=1$, $\braket{v_1|v_2}=0$.
 
 ![](misc/Pasted%20image%2020240205201750.png)
 
 ### Change of orthonormal basis
 
 An operator we wish to use will usually have a different orthonormal basis we are working with; so lettuce change to our basis.
-Given two o
+Given two orthonormal bases ${\ket{u_l}}_{l=0\dots n-1}$, ${\ket{v_i}}_{i=0\dots n-1}$. Each basis vector $\ket{v_i}$ can be represented in the other base as $\ket{v_i}=\sum_l\braket{u_l|v_i}\ket{u_l}=\sum_l\ket{u_l}\braket{u_l|v_i}$.
+
+We can prove that a change of basis is a unitary operator;
+
+![](misc/Pasted%20image%2020240213141201.png)
+
+A change of basis operator also acts as a **rotation**.
+
+- $\ket{x} \rightarrow U\ket{x}$ & $A \rightarrow UAU^\dagger$
+- therefore we can produce the following identity $(A\ket{x})\rightarrow UAU^\dagger U\ket{x} = U(A\ket{x})$
+
+#### Example with pauli matricies
+
+![](misc/Pasted%20image%2020240213142558.png)
+
+#### Hadamard Rotation
+
+**Need to memorise the hadamard operator**
+
+![](misc/Pasted%20image%2020240213142621.png)
+
+![](misc/Pasted%20image%2020240213142632.png)
+
+
+## Constructions on spaces
+
+### Direct sum
+
+Given two vector spaces $H_1, H_2$ the **direct sum** $H_1 \bigoplus H_2$ is the space whose vectors are pairs $(\ket{u},\ket{v})$. $H_1$ & $H_2$ can be seen as orthogonal components of $H_1 \bigoplus H_2$.
+
+Linear operators on direct sum spaces:
+
+![](misc/Pasted%20image%2020240213143048.png)
+
+![](misc/Pasted%20image%2020240213143330.png)
+
+
+#### Eigenvectors of direct sum
+
+![](misc/Pasted%20image%2020240213143751.png)
+
+### Tensor Product
+
+The tensor product of two spaces $H_1, H_2$ is represented $H_1 \bigotimes H_2$.
+May also be notated:
+
+![](misc/Pasted%20image%2020240214000026.png)
+
+Tensor products have special properties in relation to basis & eigenvectors:
+
+- The basis vectors in $H_1 \bigotimes H_2$ are tensor products of all combinations of basis vectors from individual $H_1$ & $H_2$, denoted $\ket{u_i} \bigotimes \ket{v_k}$:
+
+![](misc/Pasted%20image%2020240213154909.png)
+
+Given two vectors expressed in general form of basis vectors we can express the tensor product thus:
+
+![](misc/Pasted%20image%2020240213155001.png)
+
+
+Tensor product linear operators:
+
+![](misc/Pasted%20image%2020240213155042.png)
+
+Note that a tensor product **is** different from a dyad or outer product. In a tensor product the numerical values of the resulting vector may be the same as for a outer product?, however they are in a different basis - the tensor product basis?
+
+Inner product - note $\overline{v}$ & $\underline{v}$ denote two different vectors:
+
+![](misc/Pasted%20image%2020240213161321.png)
+
+The tensor product of two operators is defined:
+$f: H_1 \rightarrow H_1, g: H_2 \rightarrow H_2$:
+$(f\otimes g)(u\otimes w)=f(u)\otimes g(w)$, i.e.
+
+![](misc/Pasted%20image%2020240213162044.png)
+
+
+![](misc/Pasted%20image%2020240213162331.png)
+
+We can also easily find the eigenvectors of the tensor product of two operators if we know them individually:
+
+![](misc/Pasted%20image%2020240213162844.png)
+
+Note:
+
+![](misc/Pasted%20image%2020240214001618.png)
+
+I think what he is trying to say here is that we can't necessarily say that the reverse statement of deconstructing a vector in tensor product space into a direct representation of components of $H_1$ & $H_2$; the vector is intrinsically linked to the tensor product space.
+
+(again the maths has been skipped here and the explanation is vague).
+
+Though sometimes is true e.g. for hadamard operator:
+
+![](misc/Pasted%20image%2020240214002054.png)
+
+#### Tensor powers and representation 
+
+A tensor power of a space $Q$ is written $Q^{\otimes n}$, e.g. $Q \otimes Q \rightarrow Q^{\otimes 2}$.
+(Remember we use $\mathbb{C}^2 \rightarrow Q$) 
+
+Given a standard basis $\ket{0},\ket{1}$ we can write bases have tensor cube $\ket{00}, \ket{01}, \ket{10}$, ...
+
+
+Applying the hadamard rotation to each basis vector:
+
+![](misc/Pasted%20image%2020240214013645.png)
+
+For an arbitrary rotation:
+
+![](misc/Pasted%20image%2020240214013713.png)
