@@ -74,7 +74,7 @@ https://en.cppreference.com/w/cpp/language/template_parameters (template templat
 - You can pass a template, as an argument to another template!
 
 - Template specialisations of a class are not considered when passed as template template arguement.
-This code is valid:
+This code is valid: 
 You can use the template specialisation in code
 ```cpp
 template<class T, class U> class A {
@@ -92,8 +92,8 @@ template<template<class T, class U> class V> class B {
 };
 B<A> c;
 ```
-but this code is not:
-cant use the specialisation as a template parameter
+but this code is not: 
+The compiler will not consider/resolve to the specialisation
 ```cpp
 template<class T, int i> class A {
    int x;
