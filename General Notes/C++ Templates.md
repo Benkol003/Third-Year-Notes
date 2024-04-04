@@ -1,0 +1,142 @@
+
+## Templates
+Templates allow generic typing of classes & functions:
+```cpp
+template<typename T> T func(T t){
+	return ++T;
+}
+```
+And create template instances
+```cpp
+func<int>(1);
+func<float>(2.5f);
+```
+- Each template instance is considered a different type.
+- The compiler will expand the template create a class/function with each type signature that is used in code.
+
+- template instances for functions are equivalent to function overloading (but done with less code!)
+
+## Typename
+`typename` keyword:
+- can be used interchangeably with `class` in `template <typename A>` <==> `template <class A>`, with the exception of template template arguments pre-C++17
+- Used for instantiating specific template specialisations
+- accessing elaborated template types
+
+### Template specialisation
+https://www.ibm.com/docs/sr/zos/2.4.0?topic=only-explicit-specialization-c
+#### Full template specialisation
+
+Allows you to create an override for a template with specific parameters. You don't even need to define the primary template:
+```c++
+template<class T> class A; //declaration of primary template
+template<> class A<int>;//specialisation dec
+
+template<> class A<int> { /* ... */ };
+```
+The compiler will then use the specialisation instead of generating one from the primary template.
+
+#### Partial specialisations
+I.e. reducing the no. of template arguments:
+```cpp
+template<class T, int i> class A {
+   int x;
+};
+template<class T> class A<T, 5> {
+   short x;
+};
+```
+- Partial specialisation can only be done for classes; for functions this is equivalent to function overloads.
+
+Invalid:
+```cpp
+template<class T, class U> int A() {
+    return 0;
+}
+template<class T> int A<T, int>() {
+    return 0;
+}
+```
+
+valid function overloads:
+```cpp
+template<class T,class U> int A(){
+	return 0;
+}
+
+template<class T> int A(){
+	return 0;
+}
+```
+
+### template template arguments
+https://www.ibm.com/docs/en/zos/2.4.0?topic=only-template-template-arguments-c
+https://en.cppreference.com/w/cpp/language/template_parameters (template template arguments section)
+- You can pass a template, as an argument to another template!
+
+- Template specialisations of a class are not considered when passed as template template arguement.
+This code is valid: 
+You can use the template specialisation in code
+```cpp
+template<class T, class U> class A {
+public:
+   int x;
+};
+template<class U> class A<int, U> {
+public:
+   short x;
+};
+
+template<template<class T, class U> class V> class B {
+   V<int, char> i;
+   V<char, char> j;
+};
+B<A> c;
+```
+but this code is not: 
+The compiler will not consider/resolve to the specialisation
+```cpp
+template<class T, int i> class A {
+   int x;
+};
+template<class T> class A<T, 5> {
+   short x;
+};
+template<template<class T> class U> class B1 { };
+B1<A> c; //the a<T,5> specialisation is not considered.
+```
+
+### Elaborated template types
+https://en.cppreference.com/w/cpp/language/elaborated_type_specifier
+```cpp
+template<typename param_t>
+class Foo
+{
+	Foo(){
+	typename param_t::value_t sub;
+	}
+};
+```
+where you are accessing a scoped typedef
+```cpp
+class param_t{
+typedef unsigned int value_t;
+}
+```
+
+Without the typename specifier, compiler thinks `param_t::value_t` is accessing a static variable.
+
+### Variadic templates
+https://en.cppreference.com/w/cpp/language/parameter_pack
+Man, this is a whole another beast of syntax
+Done via use of C's ellipsis (`...`) to specify *(template) parameter packs*:
+
+```cpp
+template<class... Us>
+void f(Us... pargs) {}
+template<class... Ts>
+void g(Ts... args){
+    f(args...); // “args...” is a pack expansion
+}
+```
+
+- Can get parameter time at compile time via `sizeof...` operator
