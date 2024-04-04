@@ -1,3 +1,4 @@
+- Bias-variance decomposition is not approximation-esimation decomposition, though they are similar. https://openreview.net/pdf?id=4TnFbv16hK
 [original paper](https://www.dam.brown.edu/people/documents/bias-variance.pdf)
 #### Difference between bias and variance
 
