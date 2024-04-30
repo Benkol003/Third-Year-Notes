@@ -69,7 +69,7 @@ A dataset $S_n$ is assumed to be an **independent sample of n samples**, $P(x,y)
 
 ### Risk
 (aka error)
-- Emperical risk (of a model $f(x)$): normalised sum of loss over our training dataset of size n:
+- Emperical risk (of a model $f(x)$): normalised sum of loss over a **training dataset of limited size n**:
 
 ![](misc/Pasted%20image%2020240404110511.png)
 

@@ -1,4 +1,4 @@
-- Bias-variance decomposition is not approximation-esimation decomposition, though they are similar. https://openreview.net/pdf?id=4TnFbv16hK
+- Bias-variance decomposition is not approximation-estimation decomposition, though they are similar. https://openreview.net/pdf?id=4TnFbv16hK
 [original paper](https://www.dam.brown.edu/people/documents/bias-variance.pdf)
 #### Difference between bias and variance
 
@@ -11,13 +11,27 @@ it may look like thus:
 (aka accuracy vs precision)
 There is also an additional factor called noise which we cant be represented visually.
 
+![](misc/Pasted%20image%2020240405141127.png)
+
+
+#### Expected value definition
+
+- $E[X] = \sum\limits_i[x_iP(x_i)]$ i.e. average over all points averaged by probability of occurence
+- Typically indicate the range with subscript i.e. $E_x[x]$ 
+- $E_{(x,y)\sim D}$ or $E_{xy}[(f(x)-y)^2]$ - 
 
 #### Expected Risk
 
-**for compactness notes will denote $f(x;S_n)$ as $f(x)$ - the model is still dependently trained on the sample set $S_n$. 
+**for compactness notes will denote $f(x;S_n)$ as $f(x)$ - the model is still dependently trained on the sample set $S_n$.
 
-$\mathbb{E}_{S_n}$ - average over all possible training datasets of size $n$
-$\mathbb{E}_{(x,y)\sim D}$ - average over all data points in the population (infinite) dataset
+- $x$ and $y$ are just values in the domain $\mathbb{R}^n\times\mathbb{R}^m$ - dont have to correspond
+
+- $\mathbb{E}_{S_n}$ - average over all possible training datasets of size $n$
+- $\mathbb{E}_{(x,y)\sim D}$ - average over all data points in the population (infinite) datases#
+
+TODO - $xy$ / $y|x$ draws points $(x,y)$ from either the population $D$, or more usually $S_n$ , depending on the context - i.e. will we enclosed in a $E_{S_n}$.
+- $E_{xy}$ - takes the expected value for all combinations of data points & possible class predictions x,y i.e. weighted with $P(x,y)$
+- $E_{y|x}$ still over all possible points in the population dataset but weighted with conditional probability $P(y|x)$ instead
 
 The expected risk is the population risk for a model, averaged over all possible training sets (& models trained on each possible sample).
 i.e. the expected population risk for an arbitrary model and sample of size n.
@@ -27,7 +41,7 @@ i.e. the expected population risk for an arbitrary model and sample of size n.
 ### Bias-variance decomposition of expected squared risk
 (geman et al. 1992)
 
-Note that this is **specific to squred risk**. Decomposition holds for other losses e.g. cross entropy, but with different formula.
+Note that this is **specific to squared risk**. Decomposition holds for other losses e.g. cross entropy, but with different formula.
 
 ![](misc/Pasted%20image%2020240404215714.png)
 
@@ -39,7 +53,7 @@ Note that this is **specific to squred risk**. Decomposition holds for other los
 
 ![](misc/Pasted%20image%2020240404221400.png)
 
-TODO why not exactly equal to Bayes Risk?
+TODO why not exactly equal to Bayes Risk? I think its the difference between $E_{xy}$ vs $E_{y|x}$ - weighted over probability of seeing the data point vs the conditional probability $P(y|x)$?
 
 ### Decomposition of cross entropy risk
 

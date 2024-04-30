@@ -220,6 +220,10 @@ Then $(\lambda A + \mu B)^\dagger=\lambda^*A^\dagger+\mu^*B^\dagger$.
 - An operator is **unitary** iff $A^\dagger A=I=AA^\dagger$, & preserves the inner product.
 - An operator is **hermitian** or **self-adjoint** iff $A=A^\dagger$. i.e. the operator is it's own complex conjugate - they form a real vector space. These operators serve as real-world observables in quantum mechanics e.g. position, energy, momentum.
 
+![](misc/Pasted%20image%2020240419164334.png)
+
+A hermitian operator is the complex version of a symmetric matrix; across the symmetry line TL-BR we have the complex conjugate of values.
+
 Then for a hermitian operator A & real value $\lambda$, operator $e^{i\lambda A}$ is unitary.
 
 ![](misc/Pasted%20image%2020240202210607.png)
@@ -281,6 +285,10 @@ Proof of the hermitian statement:
 In the proof we substitute $\frac{1}{2!}(i\lambda)^2(\sum_iv_i\ket{v_i}\bra{v_i})^2=(\sum_i\frac{1}{2!}(i\lambda v_i)^2\ket{v_i}\bra{v_i})$. We don't have squaring of the dyads due to the properties of our eigenvectors being orthonormal i.e. $\braket{v_1|v_1}=1$, $\braket{v_1|v_2}=0$.
 
 ![](misc/Pasted%20image%2020240205201750.png)
+
+### eigenspaces
+https://deepai.org/machine-learning-glossary-and-terms/eigenspace
+https://www.statlect.com/matrix-algebra/algebraic-and-geometric-multiplicity-of-eigenvalues
 
 ### Change of orthonormal basis
 

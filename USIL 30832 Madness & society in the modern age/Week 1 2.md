@@ -1,5 +1,5 @@
 ### Hysteria
-Illness of old that has dissapeared from the modern age - no longer diagnosed. Exclusively women diagnosed with hysteria 
+Illness of old that has disappeared from the modern age - no longer diagnosed. Exclusively women diagnosed with hysteria 
 
 #### Hospitals of old vs modern day
 
