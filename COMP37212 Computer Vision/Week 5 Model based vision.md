@@ -111,6 +111,6 @@ https://www.youtube.com/watch?v=I3YsqHCQB4k
 https://www.cs.cmu.edu/~efros/courses/AP06/Papers/cootes-pami-01.pdf
 similar to active shape models.
 https://en.wikipedia.org/wiki/Active_appearance_model
-works with a texture instead 
+works with a texture instead - we fit our model so that it's texture appearance matches the image we are targeting?
 
 ![](misc/Pasted%20image%2020240430231605.png)
