@@ -1,6 +1,6 @@
 # Principal Component Analysis (PCA)
 
-(go revise if you dont know what it is.)
+(go revise eigendecomposition if you dont know what it is.)
 
 is a **dimensionality reduction** technique.
 
