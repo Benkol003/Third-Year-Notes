@@ -79,6 +79,14 @@ here we see segmentation via colour but not by object with the 3D feature space.
 
 ![](misc/Pasted%20image%2020240430141441.png)
 
+#### Covariance
+
+- **covariance** - the linear relationship between two dimensions. 0 if no relation.
+
+
+![](misc/Pasted%20image%2020240430222410.png)
+
+
 ![](misc/Pasted%20image%2020240430141505.png)
 
 Basically:

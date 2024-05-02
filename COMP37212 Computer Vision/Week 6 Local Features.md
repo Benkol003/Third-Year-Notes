@@ -35,7 +35,7 @@ The **harris detector** can be used to find corners in an image.
 
 Its important that, at a corner, there is significant **change in intensity** within the window if we move in **any** direction.
 
-WE can calculate the sum-of-squares distance change as:
+We can calculate the sum-of-squares distance change as:
 
 ![](misc/Pasted%20image%2020240501023254.png)
 
@@ -69,7 +69,7 @@ The PCA of this gives us eigenvectors, which we dont care about, and eigenvalues
 ![](misc/Pasted%20image%2020240501024648.png)
 
 Corresponding to the 2 axis along which we expect to see the intensity change; at an angle depending on the angle of the edge or corner in the window.
-A large eigenvalue means that there is a lot of variance in intensity i.e. a change in intensity along the direction of the corresponding eigenvector 
+A large eigenvalue means that there is a lot of variance in intensity i.e. a change in intensity along the direction of the corresponding eigenvector
 
 The values of eigenvalues $\lambda_1, \lambda_2$ tell us if we have a flat, edge or corner region:
 
@@ -78,6 +78,8 @@ The values of eigenvalues $\lambda_1, \lambda_2$ tell us if we have a flat, edge
 We can calculate this metric R to tell us when we have a corner:
 
 ![](misc/Pasted%20image%2020240501024854.png)
+
+In particular we only expect to see a corner when there is intensity change along both eigenvectors i.e. in all directions.
 
 as for a small 2x2 matrix we have
 
@@ -98,4 +100,173 @@ Properties of harris edge detector:
 
 ![](misc/Pasted%20image%2020240501034407.png)
 
-# Feature descriptors
+# Scale Invariant Region Selection
+
+## Laplacian of Gaussian methods
+
+(papers go over in more detail...)
+
+For a feature of interest we could compute descriptors at different scales. however this isnt computationally feasible as drastically increases the number of features we have to match.
+
+For our detection function we will have a peak value or *maxima* at a certain scale:
+
+![](misc/Pasted%20image%2020240501172623.png)
+
+
+
+Laplacian of Gaussian is well suited here as it's less sensitive to the size of edges i.e. edge scale, and also **localises** the edge very precisely!.
+Will see this is useful so we can precisely match the same feature at the same place across different image scales.
+
+
+#### Recap of LoG
+
+![](misc/Pasted%20image%2020240501172800.png)
+
+Laplacian seperated kernel:
+
+![](misc/Pasted%20image%2020240501172809.png)
+
+laplacian full kernel:
+
+![](misc/Pasted%20image%2020240501172816.png)
+
+![](misc/Pasted%20image%2020240501172840.png)
+
+![](misc/Pasted%20image%2020240501172910.png)
+
+![](misc/Pasted%20image%2020240501172917.png)
+
+#### Applying LoG
+
+The *characteristic scale* is the ideal scale for a feature where the response (of LoG) is highest.
+
+We scale the image, different scales $\sigma_1,\sigma_2,\dots$ and apply LoG to get distinctive features in each scale image.
+
+![](misc/Pasted%20image%2020240501173058.png)
+
+- In each scale image, look for points that are a local maxima in it's local region (i.e. 3x3 window) and above a threshold.
+- The collection of of image at different scales is known as a **scale space**. For a certain feature detected at a certain scale, we only keep it if it's maximum across the scale dimension (but at the same position - this is why using LoG is important, as it find the position of features accurately) i.e. it's at the characteristic scale. We will have a lot of the same features detected but at different scales, so this allows us to find the optimal scale for the feature.
+
+
+![](misc/Pasted%20image%2020240501173456.png)
+
+### Harris-laplace
+[paper](https://ieeexplore.ieee.org/document/937561)
+
+LoG is actually pretty bad at finding unique features - it finds edges well...
+
+
+So we apply harris corner detector at different scales, and LoG at those different scales. We only keep harris features at a specific location and scale that are also 
+the maximum in the scale space for LoG.
+
+![](misc/Pasted%20image%2020240501173731.png)
+
+![](misc/Pasted%20image%2020240501173739.png)
+
+### LoG approximation with DoG
+
+Typically already have first derivative of gaussians to use. can approximate the LoG or second derivative of gaussian for a speedup as the difference between two first derivative of gaussians.
+
+
+$$g''(x)\approx\frac{g'(x+\Delta x)-g'(x)}{\Delta x}$$    
+
+![](misc/Pasted%20image%2020240501174333.png)
+
+![](misc/Pasted%20image%2020240501174346.png)
+
+![](misc/Pasted%20image%2020240501174356.png)
+
+another note - when adjusting scale downwards we are performing downscaling or subsampling, when $\sigma=2^n$ i.e. resolution is exactly half along each dimension.
+
+![](misc/Pasted%20image%2020240501174555.png)
+
+Each 'step' down by half in resolution is called an octave.
+
+# Feature Descriptors
+
+## SIFT
+[SIFT paper](https://www.cs.ubc.ca/~lowe/papers/ijcv04.pdf)
+
+Using just the image patch alone is idea - very sensitive to rotation, scale, illumination  etc.
+
+
+Instead we calculate intensity gradients for each pixel in the feature region, and build a histogram of gradient directions.
+
+![](misc/Pasted%20image%2020240501190152.png)
+
+To begin with, we assume we have already normalised scale: with SIFT we use DoG as mentioned earlier with a scale map to find scale with maximal response.
+
+1. take a pixel region over the feature. e.g. 8x8 window.
+
+![](misc/Pasted%20image%2020240501191705.png)
+
+calculate the gradient histogram for this - we also **bin/quantize** the gradients into angles of $45\textdegree$ so that we only have 8 gradient directions.
+
+![](misc/Pasted%20image%2020240501191800.png)
+
+(their diagrams are shit, there's only 7 bars there)
+
+now **normalise the orientation** so that the *dominant orientation* i.e. the direction with the most calculated gradients is chosen to be up - i.e. shift the histogram.
+
+
+2. Divide the region into 4x4 subpatches. so we get $n/4 \times n/4$ subpatches.
+
+this is 2x2 subpatches for a 8x8 image. Calculate the histogram for these subpatches. Note we dont need to orientation-normalise these again.
+
+![](misc/Pasted%20image%2020240501192552.png)
+
+
+Now concatenate these to form our descriptor - we will be left with a descriptor of size $n/4 \times n/4 \times 8$ i.e. $4\times 4\times 8$ or 128 dimensions in this case. (SIFT uses 16x16 region instead in their implementation.)
+
+
+![](misc/Pasted%20image%2020240501192744.png)
+
+![](misc/Pasted%20image%2020240501192754.png)
+
+## Feature matching
+
+- Use Sum-of-Square Distance (SSD) = $\sum\limits_i^I (x_i-y_i)^2$ (two samples x,y, i dimensions)
+
+Note that 'distance' **doesn't relate to real distance** here! its the distance in the vector space of the descriptor.
+
+however matches may be ambiguous:
+
+![](misc/Pasted%20image%2020240501193732.png)
+
+and can match to the wrong feature. use a ratio test to filter threshold out ambiguous matches - use the closest and second closest match by SSD:
+
+![](misc/Pasted%20image%2020240501193756.png)
+
+![](misc/Pasted%20image%2020240501193958.png)
+
+
+#### ROC curve (recap)
+
+![](misc/Pasted%20image%2020240501212705.png)
+
+Given our model output, we choose a threshold for making a prediction. I.e. a threshold for the ratio, or threshold on neuron output probability for a multiclass classifier, to tell us when matches are too ambiguous or not.
+for each threshold we plot the TP to FP. we can also do this for different models e.g. different algorithms, model architectures - get a ROC curve for each model.
+
+![](misc/Pasted%20image%2020240501213202.png)
+
+The best model is the one with the highest area under curve (AUC)- the curve will tend towards the ideal point of max TP and zero FP.
+
+
+![](misc/Pasted%20image%2020240501213514.png)
+
+
+#### Applications of SIFT
+
+- object recognition - works even with occlusion of the object
+
+![](misc/Pasted%20image%2020240501213616.png)
+
+![](misc/Pasted%20image%2020240501213621.png)
+
+- image stitching:
+
+![](misc/Pasted%20image%2020240501213634.png)
+
+wide stereo baseline stereo matching (next week) (paper)[https://ieeexplore.ieee.org/document/710802]
+
+![](misc/Pasted%20image%2020240501214154.png)

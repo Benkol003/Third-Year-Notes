@@ -2,7 +2,7 @@
 
 (go revise eigendecomposition if you dont know what it is.)
 
-is a **dimensionality reduction** technique.
+PCA is a **dimensionality reduction** technique.
 
 Algorithm:
 
@@ -15,18 +15,12 @@ Take a look at this data:
 ![](misc/Pasted%20image%2020240430222203.png)
 
 $v_1,v_2$ are eigenvectors, $v_1$ has a larger eigenvalue. We could choose to remove the $v_2$ and express data in terms of $v_1$ i.e. a model assuming lies on the line of best fit $v_1$.
-$v_2$ can also be thought as the variance w.r.t. $v_1$ of our data.
-
-
-- **covariance** - the linear relationship between two dimensions. 0 if no relation.
-
-
-![](misc/Pasted%20image%2020240430222410.png)
+We then lose any variance along eigenvector $v_2$ i.e. all points will now lie on the line $v_1$.
 
 
 #### Constructing a covariance matrix.
 
-Given $d$ dimensions we have a $d\times d$ matrix, with element $ij$ being covariance(i,j). Note this is a symmetric matrix as element $ij$=$ji$ as covariance(i,j) = covariance(j,i).
+Given $d$ dimensions we have a $d\times d$ matrix, with element $ij$ being covariance(i,j). Note this is a symmetric matrix as element $ij=ji$ as covariance$(i,j)$ = covariance$(j,i)$.
 
 ![](misc/Pasted%20image%2020240430222548.png)
 
@@ -78,7 +72,7 @@ We also compute the mean (across the dimension of length 6) of this matrix to ge
 
 ![](misc/Pasted%20image%2020240430230514.png)
 
-we can now **generate** new active shape models by varying the features given  by the eigenvectors.
+we can now **generate** new active shape models by varying the features given by the eigenvectors via the values in shape parameter vector $b$. Use a value of 0 to use the mean value of a feature i.e. don't change, else use a +/- value.
 
 ![](misc/Pasted%20image%2020240430230654.png)
 
@@ -92,7 +86,7 @@ what if we have an active shape model that we want to fit to a new image?
 
 ![](misc/Pasted%20image%2020240430231011.png)
 
-when making your active shape model, you wanna design it so that the **points and lines lie on distinctive edges** for this to work.
+when making your active shape model, you wanna design it so it's **points and lines lie on distinctive edges** for this to work.
 
 Choose edges closest to your points that are strong enough (i.e. over a threshold?).
 
