@@ -1,3 +1,6 @@
+This module is better served by paper notes  - theres way too much maths to handle and it will take ages to type it all out.
+
+
 ## Transition Systems
 
 I.e. a state diagram:

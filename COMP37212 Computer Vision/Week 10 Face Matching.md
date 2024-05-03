@@ -68,7 +68,91 @@ a **stump** is just a tree with a single decision
 
 ## Face Detection
 
+this is different from face recognition i.e. tagging or identifying face images. Face detection is just finding faces in an image.
 
+After face detection we can do stuff like
+
+- fitting active shape models to faces
+- auto adjustment of camera parameters e.g. exposure, focus, red-eye removal
+- then do face recognition
+
+face detection also generalises to object detection, similar to previous object recognition
 
 ### Viola Jones algorithm
 
+(we can also use this algorithm for detection of any other object class)
+
+[paper](https://www.cs.cmu.edu/~efros/courses/LBMV07/Papers/viola-cvpr-01.pdf)
+
+the algorithm works off (facial) rectangular features of different intensity, known as **Haar** features.
+
+![](misc/Pasted%20image%2020240503172942.png)
+
+the value of *white *
+
+These correspond to significant facial features:
+
+![](misc/Pasted%20image%2020240503173033.png)
+
+how to calculate these?
+
+#### Integral images
+
+![](misc/Pasted%20image%2020240503173531.png)
+
+point $(x,y)$ gives the area (sum intensity in this area) formed by $(0,0)$ and $(x,y)$. notably the image retains all original information i.e. the operation is reversible
+
+![](misc/Pasted%20image%2020240503173639.png)
+
+what if we want to find the sum of intensity in an area in the middle of the image?
+
+![](misc/Pasted%20image%2020240503173732.png)
+
+we can then use this technique to calculate intensity area values for the haar features
+
+![](misc/Pasted%20image%2020240503174730.png)
+
+the viola jones algorithm uses 24x24 images. even with the small image size there are still 180,000 different possible features (of the haar features in different position,scale and parity)
+
+#### image normalisation
+
+we can also use the integral images to do this - 
+
+![](misc/Pasted%20image%2020240503174904.png)
+
+(and we normalise to get mean 0, variance 1 as per usual)
+
+### Classifier
+
+Using all 180,000 features is unreasonable. instead the algorithm uses adaboost. for the weak learners , we use a classifier that simply thresholds a single feature to make a prediction.
+
+![](misc/Pasted%20image%2020240503175043.png)
+
+with this classifier they get good accuracy but time performance is still too slow
+
+![](misc/Pasted%20image%2020240503175255.png)
+
+### cascade classifiers
+
+this is used to filter out images that arent faces i.e. only keep good potential matches.
+
+also known as a *degenerate decision tree*
+
+![](misc/Pasted%20image%2020240503175453.png)
+
+![](misc/Pasted%20image%2020240503180800.png)
+
+we want to minimise false negatives especially at early stages. There is a tradeoff between model size and threshold's against performance; at earlier stages more simple models are used to filter the majority of the data; at later stages can use larger models; the time performance increase is negated by the fact the most non-faces are filtered out.
+
+![](misc/Pasted%20image%2020240503181109.png)
+
+
+![](misc/Pasted%20image%2020240503181037.png)
+
+![](misc/Pasted%20image%2020240503181043.png)
+
+![](misc/Pasted%20image%2020240503181131.png)
+
+applications to other objects:
+
+![](misc/Pasted%20image%2020240503181145.png)
