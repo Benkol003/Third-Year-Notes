@@ -2,7 +2,7 @@ Notes for:
 - UoM Computer science third year modules
 - General Programming notes
 
-PDF's for academic papers that aren't easily accessible from open-access i.e. arXiv are included. (screw paywalls for academic journals)
+PDF's for academic papers that aren't easily accessible from open-access i.e. arXiv are included. (screw paywalls for academic journals! R.I.P. Aaron Swartz)
 
 Notes have been formatted to try appear properly in GitHub markdown preview; However some math notation e.g. matrices don't render properly, & you will see the full MathJax.
 (This isn't my fault, GitHub markdown preview is broken.)

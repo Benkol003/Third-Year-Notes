@@ -309,7 +309,7 @@ our feature matching algorithms i.e. sift can handle scale, rotation (and probab
 alright, i'm skipping all the shit about different transformations, the lecture basically just reiterates what they do.
 more importantly,
 
-a **homography** - a general mapping of one image plane to another. this only does affine transformations. Translation, scaling, rotation, and skewing are all classified as affine transforms. so this wont work for warping.
+a **homography** - a general mapping of one image plane to another. this only does affine transformations. Translation, scaling, rotation, and skewing are all classified as affine transforms. we use a homography matrix to transform and stitch our images - but this wont work for warped images (not affine).
 
 
 generally we have the homography or sum of all these transforms as this matrix:
@@ -329,10 +329,10 @@ we can also rearrange this as
 
 we minimise $||A\hat{h}||^2$ i.e. to get the least amount of residuals
 
-after expanding this its in the form of an Eigendecomposition problem.
-see https://en.wikipedia.org/wiki/Linear_least_squares (idk why its Eigendecomposition)
+after expanding this its in the form of an Eigendecomposition (hello darkness my old friend) problem .
+see https://en.wikipedia.org/wiki/Linear_least_squares (idk why its eigendecomposition)
 
-how do we do this for multiple sets of paired features? **direct linear transform**.
+how do we do this for multiple sets of paired features? **direct linear transform**?.
 https://en.wikipedia.org/wiki/Direct_linear_transformation
 
 
@@ -380,3 +380,5 @@ images may need edge blending:
 ![](misc/Pasted%20image%2020240502025239.png)
 
 ![](misc/Pasted%20image%2020240502025254.png)
+
+bruh this book aint on the reading list

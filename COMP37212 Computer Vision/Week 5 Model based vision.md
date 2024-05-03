@@ -17,6 +17,11 @@ Take a look at this data:
 $v_1,v_2$ are eigenvectors, $v_1$ has a larger eigenvalue. We could choose to remove the $v_2$ and express data in terms of $v_1$ i.e. a model assuming lies on the line of best fit $v_1$.
 We then lose any variance along eigenvector $v_2$ i.e. all points will now lie on the line $v_1$.
 
+first we **normalise the mean of the data** - $\mu=0$ 
+
+![](misc/Pasted%20image%2020240502173502.png)
+
+some methods also normalise the total variance in all dimensions (just the sum of variance for each dimension)
 
 #### Constructing a covariance matrix.
 
