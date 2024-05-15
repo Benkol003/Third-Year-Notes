@@ -13,13 +13,6 @@ There is also an additional factor called noise which we cant be represented vis
 
 ![](misc/Pasted%20image%2020240405141127.png)
 
-
-#### Expected value definition
-
-- $E[X] = \sum\limits_i[x_iP(x_i)]$ i.e. average over all points averaged by probability of occurence
-- Typically indicate the range with subscript i.e. $E_x[x]$ 
-- $E_{(x,y)\sim D}$ or $E_{xy}[(f(x)-y)^2]$ - 
-
 #### Expected Risk
 
 **for compactness notes will denote $f(x;S_n)$ as $f(x)$ - the model is still dependently trained on the sample set $S_n$.
@@ -27,7 +20,7 @@ There is also an additional factor called noise which we cant be represented vis
 - $x$ and $y$ are just values in the domain $\mathbb{R}^n\times\mathbb{R}^m$ - dont have to correspond
 
 - $\mathbb{E}_{S_n}$ - average over all possible training datasets of size $n$
-- $\mathbb{E}_{(x,y)\sim D}$ - average over all data points in the population (infinite) datases#
+- $\mathbb{E}_{(x,y)\sim D}$ - average over all data points in the population (infinite) datasest
 
 TODO - $xy$ / $y|x$ draws points $(x,y)$ from either the population $D$, or more usually $S_n$ , depending on the context - i.e. will we enclosed in a $E_{S_n}$.
 - $E_{xy}$ - takes the expected value for all combinations of data points & possible class predictions x,y i.e. weighted with $P(x,y)$
@@ -38,14 +31,14 @@ i.e. the expected population risk for an arbitrary model and sample of size n.
 
 ![](misc/Pasted%20image%2020240404215333.png)
 
-### Bias-variance decomposition of expected squared risk
+### Bias-variance decomposition of expected squared risk/loss
 (geman et al. 1992)
 
-Note that this is **specific to squared risk**. Decomposition holds for other losses e.g. cross entropy, but with different formula.
+Note that this is **specific to squared risk/loss function**. Decomposition holds for other losses e.g. cross entropy, but with different formula.
 
 ![](misc/Pasted%20image%2020240404215714.png)
 
-- Expected model $\mathbb{E}_{S_n}[f(x)]$ - averaged sum of each model trained with sample $S_n$, weighted by $p(S_n)$.
+- Expected model $\mathbb{E}_{S_n}[f(x)]$ - the averaged model, each trained with i.i.d. sample $S_n$, weighted by $p(S_n)$.
 - $E_{y|x}$ - expected value of y conditional on a given **fixed** x - we also take the average of $E_{y|x}$ over $x$ with $E_x[\dots]$ exterior to this
 - Infact the noise, bias & variance values are all averaged with $E_x$.
 
@@ -59,6 +52,8 @@ TODO why not exactly equal to Bayes Risk? I think its the difference between $E_
 
 #### Kullbach-Liebler divergence
 
+the distance between two distributions using relative entropy - the distribution of the true class labels, and our predicted distribution across output classes.
+
 For n classes: 
 
 $$K(y || f(x)) := \sum\limits_{c=1}^n y_c ln \frac{y_c}{f_c(x)}$$
@@ -66,6 +61,13 @@ $$K(y || f(x)) := \sum\limits_{c=1}^n y_c ln \frac{y_c}{f_c(x)}$$
 - $y_c$ denotes the true class distribution e.g. for three classes $[0.1,0.1,0.8]$ - class 3 occurs 80% of the time.
 - $f_c$ denotes the probability predicted by model f with input 
 
+
+- entropy of a distribution is $H(x)=-\sum\limits_c y_c\ln y_c$. 
+- cross entropy $H(x,y)=-\sum\limits_i y_if(x_i)$ 
+- $\ln\frac{y_c}{f_c(x)}=(\ln y_c - \ln f_c(x))$
+- therefore cross entropy = entropy + KL-divergence
+
+- TODO prove upper bound on entropy using jensens inequality, is $\ln(2n)$ for n classes.
 #### Converting KL-divergence form to cross-entropy
 
 If we make assumptions:
@@ -75,6 +77,8 @@ If we make assumptions:
 Then KL-divergence is equivalent to cross entropy:
 
 ![](misc/Pasted%20image%2020240404235622.png)
+
+if $y_c$ is 0, then sum term is 0 for both KL and cross entropy. when $y_c=1$, $y_c\ln \frac{1}{f_c(x)}=-y_c \ln f_c(x)$. The entropy is also zero as $\ln 1=0$.
 
 ![](misc/Pasted%20image%2020240404235731.png)
 

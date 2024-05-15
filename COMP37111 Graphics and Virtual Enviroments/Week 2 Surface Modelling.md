@@ -1,0 +1,128 @@
+Modelling surfaces are similar to modelling curves, except we do this across a 2D surface.
+
+### Meshes
+
+Way to represent a 2D surface in 3D by having a lot of vertices, that we join together with polygons (always triangles). Analogous to polylines, and this is what the GPU will finally render for 2D surfaces. We use more vertices to achieve more level of detail and subdivision.
+
+![](misc/Pasted%20image%2020231013005728.png)
+
+
+### Bicubic Bezier Surfaces
+
+Essentially we have Bezier curves going in two dimensions.
+
+**Bezier Surface**: (Also known as Bezier patch) A 2D surface governed by control points, that is formed by  Bezier curves
+
+![](misc/Pasted%20image%2020231013153257.png)
+
+(A **Bicubic** Bezier Patch.)
+
+**Bezier Surface Definition**: For a Bezier surface of degree (n,m), has (n+1)(m+1) control points, of form $k_{i,j}$ , for $i=0,\dots n$ & $j=0,\dots m$ :
+
+the position of point p defined by parametric coordinates (u,v) is:
+
+$$P(u,v) = \sum\limits_{i=0}^n\sum\limits_{j=0}^m B^n_i(u) B^m_j(v) k_{i,j}$$
+using two Bernstein polynomials; 
+$B^n_i(u) = \dbinom{n}{i}u^i(1-u)^{n-i}$ (and same for $B^m_j$)
+$\dbinom{n}{i}=\frac{n!}{i!(n-i)!}$
+
+#### Example: Bicubic Bezier Patch
+has 16 control points, and 4 Bezier curves in each dimension u, v.
+
+Given the Bernstein polynomials:
+![](misc/Pasted%20image%2020231013154828.png)
+
+We iterate through all permutations of using two of the polynomials, with different parameters u and v.
+
+#### Matrix computation of Bezier Patches
+
+*Curves*: P(t)=**GBT**(t)
+
+*patches*: $P(u,v)=\underline{u}^\intercal B_v^\intercal G^x B_u\underline{v}$   
+
+- $\underline{u},\underline{v}$ are bower basis vectors $[1,u,u^2, \dots u^n]$ and $[1,v,v^2,\dots v^m]$
+- $B_u$ & $B_v$ are the Bernstein Basis functions for u and v, and are square matrices of sizes (n+1) & (m+1) respectfully.
+
+See https://www.gamedev.net/articles/programming/math-and-physics/practical-guide-to-bezier-surfaces-r3170/
+
+
+### Displacement Mapping
+
+Similar to bump mapping; On a given surface, we have for each pixel an associated displacement that modifies its height.
+
+![](misc/Pasted%20image%2020231013175826.png)
+
+### Chaikin's Corner Cutting Algorithm
+
+This algorithm cuts corners/ smooths surfaces of a mesh, by generating new interpolated points from existing ones; generates quadratic splines from the original data.
+
+For any two points on a polygon, calculate two new points that are 1/4 and 3/4 along between the original points.
+
+![](misc/Pasted%20image%2020231013180319.png)
+
+(From points $P_i,P_{i+1}$, we generated points $Q_i,R_i$ ).
+When applied to a polygon of *n* points, we obtain a new set of *2n* points.
+
+![](misc/Pasted%20image%2020231013180434.png)
+
+![](misc/Pasted%20image%2020231013180443.png)
+
+(see https://www.cs.unc.edu/~dm/UNC/COMP258/LECTURES/Chaikins-Algorithm.pdf)
+
+### Implicit Surfaces
+
+Render a surface as a mathematical equation that defines an inequality:
+
+![](misc/Pasted%20image%2020231013180555.png)
+
+E.g. this defines a heart.
+to test a point $(x,y,z)$; we plug into LHS of equation, if value <0, then is in region, if >0 is outside.
+ 
+Implicit surface definitions are computationally faster, but it is much harder to modify the rendered surface as we have to modify the equation somehow (without a strict set of rules on how.)
+
+### Surfaces of revolution
+
+https://en.wikipedia.org/wiki/Surface_of_revolution
+
+We have a **generatrix**, which is a curve/line that we *rotate* around an axis of rotation at a point.
+
+$s(u,v)=R(v)q(u)$
+
+- v and R(v): Rotation matrix and parameter v that controls the the point's point of rotation around the axis.
+- u and q(u): q(u) defines the generatrix curve, and u controls the points position along that. 
+
+![](misc/Pasted%20image%2020231013181324.png)
+
+(left: Generatrix curve, right: wine glass as fully generated surface.)
+
+#### Generalised Cylinder
+We take some defined curve and we move it along a trajectory to trace out a cylinder.
+You could modify this by changing radius or shape of the curve as it moves along the path to have a cylinder with dynamic geometry.
+
+![](misc/Pasted%20image%2020231013182843.png)
+
+
+
+### Frenet-Serret Frame/TNB Frame
+
+At a point on a curve we have use this to establish a local coordinate system defined by:
+
+T - tangent to the curve
+N - the normal to the curve
+B - Binomial unit vector - this is the *cross product* of T and N.
+
+![](misc/Pasted%20image%2020231013192247.png)
+
+The TNB frame is useful for when we have a moving object, but we want to establish a static co-ordinate system relative to that object whilst it is moving.
+
+Change of Normal direction: Have top be careful of inflection points in a curve otherwise we may use the normal that points on the wrong side of the curve.
+
+![](misc/Pasted%20image%2020231013192105.png)
+
+### Point Set Surfaces
+
+![](misc/Pasted%20image%2020231013192620.png)
+
+Also known as a *point cloud*, We have a set of points on the surface of a model; These are often generated by 3D scanners.
+These are then usually converted to an actual 3D surface via **surface reconstruction**, into e.g. a Bezier/NURBS surface.
+

@@ -33,7 +33,7 @@ if the probability of a class voting incorrectly is $\epsilon<0.5$ then can guar
 
 ### Training ensembles
 
-If we train each of our models in the ensemble on the same training data, the only difference between models is from differences from their learning algorithms; & if these are the same, we get identical models, rendering our ensemble useless.
+If we train each of our models in the ensemble on the same training data, the only difference between models is from differences from their learning algorithms; & if these are the same, we get identical models, rendering our ensemble useless. we need **diverse models**.
 
 We could split the dataset into N sets for N models to make the models independent; however this doesn't work well in practice as the models become less accurate on test data due to the reduced training dataset size.
 

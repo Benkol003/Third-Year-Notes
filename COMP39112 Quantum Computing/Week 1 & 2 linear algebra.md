@@ -221,7 +221,7 @@ Then $(\lambda A + \mu B)^\dagger=\lambda^*A^\dagger+\mu^*B^\dagger$.
 - An operator is **normal** iff $A^\dagger A=AA^\dagger$ & therefore $U^{-1}=U^\dagger$.
 - A matrix is **symmetric** iff $A=A^T$.
 - An operator is **unitary** iff $A^\dagger A=I=AA^\dagger$, & preserves the inner product.
-- An operator is **hermitian** or **self-adjoint** iff $A=A^\dagger$. i.e. the operator is it's own complex conjugate - they form a real vector space. These operators serve as real-world observables in quantum mechanics e.g. position, energy, momentum.
+- An operator is **hermitian** or **self-adjoint** iff $A=A^\dagger$. i.e. the operator is it's own complex conjugate transpose - they form a real vector space. These operators serve as real-world observables in quantum mechanics e.g. position, energy, momentum.
 
 ![](misc/Pasted%20image%2020240419164334.png)
 
@@ -271,11 +271,9 @@ $A=Q\Lambda Q^{-1}$, with
 - $Q$ - matrix where i'th column corresponds to eigenvector $\ket{v_i}$.
 - $\Lambda$ diagonal matrix with i'th diagonal value as eigenvalue $\lambda_i$.
 
-#### Diagonalisation / SVD
+### Diagonalisation
 
-Iff matrix A is a normal matrix, then the eigendecomposition of A can be written as $A=\sum_iv_i\ket{v_i}\bra{v_i}$, and the eigenvectors $\forall i$, $\ket{v_i}$ form an orthonormal basis across this space.
-
-This is basically a restatement of [*Singular Value Decomposition*](https://en.wikipedia.org/wiki/Singular_value_decomposition) or *diagonalisation*; TODO (optional) cover the proof.
+Iff matrix A is a **normal** matrix (as are hermitian and unitary matricies), then the eigendecomposition of A can be written as $A=\sum_iv_i\ket{v_i}\bra{v_i}$, and the eigenvectors $\forall i$, $\ket{v_i}$ **form an orthonormal basis** across this space.
 
 - For unitary $U$, also $\forall i$, $|v_i|=1$. ($v_i$ - eigenvalue)
 - For hermitian $A$ also $\forall i$ $v_i$ all eigenvalues are real.
@@ -405,3 +403,8 @@ Applying the hadamard rotation to each basis vector:
 For an arbitrary rotation:
 
 ![](misc/Pasted%20image%2020240214013713.png)
+
+
+
+
+$$[1,-1]^T=\ket{1}\otimes-1\ket{1} = -1(\ket{1}\otimes\ket{1}) = -[1,1]^T$$      

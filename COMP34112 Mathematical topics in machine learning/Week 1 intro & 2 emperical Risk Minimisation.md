@@ -28,6 +28,23 @@ Our objective is to find $w^* = argmin_w(l_{train}(y,f(x;w)))$ i.e. weights that
 
 We have *local & global* minima; want to find global but training algorithm can get stuck in local minima e.g. SGD.
 
+### expectation value
+
+there are various forms of this that aren't well documented in the notes.
+
+$$\mathbb{E_X}[f(x)] = \int f(x)p(x)\,dx$$ 
+
+![](misc/Pasted%20image%2020240504202707.png)
+
+
+![](misc/Pasted%20image%2020240504202453.png)
+
+(if x an y are independent this reduces down to $\mathbb{E}_{XY}=\int P_X(x)P_Y(y)[\dots]\,dy\,dx )$)
+
+if you see $\mathbb{E_{Y|X}}$, it is **always bracketed inside** a $\mathbb{E}_X[\dots\mathbb{E}_{Y|X}\dots]$  so $$\mathbb{E}_{Y|X}[l(y,x)]=\int P_{Y|X}(y|x)l(y,x)\,dy$$
+
+can therefore see that $$\mathbb{E}_{XY}[l(y,x)]=\int P_X(x)\int \mathbb{E}_{Y|X}[l(y,x)]\,dx$$
+
 ### gradient descent
 
 we use the 1st derivative of the loss function.
